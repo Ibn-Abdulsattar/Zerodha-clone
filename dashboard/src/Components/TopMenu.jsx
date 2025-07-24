@@ -47,7 +47,7 @@ const TopMenu = () => {
     await axios.post("http://localhost:8080/user/logout", null, {
       withCredentials: true,
     });
-    window.location.href = "http://localhost:5173/";
+    window.location.href = "https://main.d34swhe0d4p0ic.amplifyapp.com/";
   };
 
   const handleSignup = ()=>{
