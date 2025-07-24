@@ -47,7 +47,7 @@ export default function Universe() {
   ];
 
   const handleSignup=()=>{
-     window.open("https://main.d2zgpkltxfayl3.amplifyapp.com/", "_blank", "noopener,noreferrer");
+     window.open("https://main.d1j2bhmi0fpcet.amplifyapp.com/", "_blank", "noopener,noreferrer");
   }
   return (
     <Box sx={{ width: "98.8vw" }}>

@@ -47,12 +47,12 @@ const TopMenu = () => {
     await axios.post("http://localhost:8080/user/logout", null, {
       withCredentials: true,
     });
-    window.location.href = "https://main.d34swhe0d4p0ic.amplifyapp.com/";
+    window.location.href = "https://main.d35r5otxvmb7vz.amplifyapp.com/";
   };
 
   const handleSignup = () => {
     window.open(
-      "https://main.d2zgpkltxfayl3.amplifyapp.com/",
+      "https://main.d1j2bhmi0fpcet.amplifyapp.com/",
       "_blank",
       "noopener,noreferrer"
     );

@@ -121,7 +121,7 @@ export default function Trust() {
             <Link
               variant="h6"
               underline="none"
-              href="https://main.dvbklz9x5w2e3.amplifyapp.com/"
+              href="https://main.d2np3magzuj7ka.amplifyapp.com/"
               sx={{ display: "flex", alignItems: "center" }}
             >
               Try Kite demo <ArrowRightAltIcon />

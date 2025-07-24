@@ -68,7 +68,7 @@ export default function LeftCorner({
             >
               {Try && (
                 <Link
-                  href="#"
+                  href="https://main.d2np3magzuj7ka.amplifyapp.com/"
                   sx={{
                     textDecoration: "none",
                     fontSize: "1.2rem",

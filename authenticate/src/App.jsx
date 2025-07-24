@@ -66,7 +66,7 @@ function App() {
         withCredentials: true,
       });
 
-      window.location.href = 'http://localhost:5174/';
+      window.location.href = 'https://main.d2np3magzuj7ka.amplifyapp.com/';
     } catch (err) {
       const msg =
         err.response?.data?.msg || "Authentication failed. Try again.";

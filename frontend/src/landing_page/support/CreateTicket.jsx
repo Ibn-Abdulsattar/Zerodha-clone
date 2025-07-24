@@ -93,7 +93,7 @@ export default function CreateTicket() {
               {section.items.map((item, i) => (
                 <Link
                   key={i}
-                  href="https://main.dvbklz9x5w2e3.amplifyapp.com/"
+                  href="https://main.d2np3magzuj7ka.amplifyapp.com/"
                   underline="hover"
                   sx={{
                     display: "block",
