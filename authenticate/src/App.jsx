@@ -51,12 +51,14 @@ function App() {
     event.preventDefault();
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const endpoint = isSignup
-      ? "http://localhost:8080/user/signup"
-      : "http://localhost:8080/user/signin";
+const endpoint = isSignup
+  ? "https://backend-env.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
+  : "https://backend-env.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signin";
+
 
     const payload = { ...formData };
     if (!isSignup) delete payload.username;
