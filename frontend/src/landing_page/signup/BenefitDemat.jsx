@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import Benefit_demat from "../../assets/image/Benefit_demat.png";
+import Benefit_demat from "../../assets/image/benefit_demat.png";
 import BenefitSteps from "./BenefitSteps";
 
 export default function BenefitDemat() {
