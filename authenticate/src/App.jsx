@@ -56,8 +56,8 @@ function App() {
     e.preventDefault();
 
 const endpoint = isSignup
-  ? "http://backend-env.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
-  : "http://backend-env.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signin";
+  ? "https://backend-env.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
+  : "https://backend-env.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signin";
 
 
     const payload = { ...formData };
