@@ -50,9 +50,13 @@ const TopMenu = () => {
     window.location.href = "https://main.d34swhe0d4p0ic.amplifyapp.com/";
   };
 
-  const handleSignup=()=>{
-     window.open("https://main.d2zgpkltxfayl3.amplifyapp.com/", "_blank", "noopener,noreferrer");
-  }
+  const handleSignup = () => {
+    window.open(
+      "https://main.d2zgpkltxfayl3.amplifyapp.com/",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
 
   useEffect(() => {
     axios
@@ -95,7 +99,6 @@ const TopMenu = () => {
               display: "flex",
               alignItems: "center",
             }}
-            
           >
             <Box
               sx={{
@@ -137,16 +140,6 @@ const TopMenu = () => {
             {author ? (
               <>
                 <MenuItem
-                  onClick={
-                    handleSignup
-                  }
-                >
-                  🔓 Signup
-                </MenuItem>
-              </>
-            ) : (
-              <>
-                <MenuItem
                   onClick={() => {
                     handleClose();
                     handleLogout();
@@ -154,6 +147,10 @@ const TopMenu = () => {
                 >
                   🔓 Logout
                 </MenuItem>
+              </>
+            ) : (
+              <>
+                <MenuItem onClick={handleSignup}>🔓 Signup</MenuItem>
               </>
             )}
           </Menu>
