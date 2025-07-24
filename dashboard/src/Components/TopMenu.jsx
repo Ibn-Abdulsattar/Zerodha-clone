@@ -50,8 +50,8 @@ const TopMenu = () => {
     window.location.href = "https://main.d34swhe0d4p0ic.amplifyapp.com/";
   };
 
-  const handleSignup = ()=>{
-
+  const handleSignup=()=>{
+     window.open("https://main.d2zgpkltxfayl3.amplifyapp.com/", "_blank", "noopener,noreferrer");
   }
 
   useEffect(() => {
@@ -137,9 +137,9 @@ const TopMenu = () => {
             {author ? (
               <>
                 <MenuItem
-                  onClick={() => {
-                    handleSignup();
-                  }}
+                  onClick={
+                    handleSignup
+                  }
                 >
                   🔓 Signup
                 </MenuItem>

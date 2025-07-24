@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 
 export default function OpenAccount() {
   const handleSignup=()=>{
-     window.open("http://localhost:5175/", "_blank", "noopener,noreferrer");
+     window.open("https://main.d2zgpkltxfayl3.amplifyapp.com/", "_blank", "noopener,noreferrer");
   }
   return (
     <>

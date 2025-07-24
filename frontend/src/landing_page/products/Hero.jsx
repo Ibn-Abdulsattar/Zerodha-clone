@@ -32,7 +32,7 @@ export default function Hero() {
           >
             Check out our{" "}
             <Link
-              href="#"
+              href="https://main.dvbklz9x5w2e3.amplifyapp.com/"
               underline="hover"
               sx={{
                 display: "inline-flex",

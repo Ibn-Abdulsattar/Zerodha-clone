@@ -45,6 +45,10 @@ export default function Universe() {
       link: "https://joinditto.in",
     },
   ];
+
+  const handleSignup=()=>{
+     window.open("https://main.d2zgpkltxfayl3.amplifyapp.com/", "_blank", "noopener,noreferrer");
+  }
   return (
     <Box sx={{ width: "98.8vw" }}>
       <Container sx={{ textAlign: "center", mb: "5rem" }}>
@@ -97,6 +101,7 @@ export default function Universe() {
           }}
           variant="contained"
           color="primary"
+          onClick={handleSignup}
         >
           Signup for free
         </Button>

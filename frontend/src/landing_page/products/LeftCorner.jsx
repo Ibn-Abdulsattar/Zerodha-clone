@@ -108,12 +108,12 @@ export default function LeftCorner({
               }}
             >
               {google && (
-                <Link href="#" sx={{ display: "inline-block" }}>
+                <Link href="https://play.google.com/store/apps?hl=en" sx={{ display: "inline-block" }}>
                   <Box component="img" src={google} width={150} alt="Google Play" />
                 </Link>
               )}
               {app && (
-                <Link href="#" sx={{ display: "inline-block" }}>
+                <Link href="https://www.apple.com/app-store/" sx={{ display: "inline-block" }}>
                   <Box component="img" src={app} width={140} alt="App Store" />
                 </Link>
               )}
