@@ -54,6 +54,7 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting form:", formData); // ADD THIS
 
 const endpoint = isSignup
   ? "https://backend-env.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
@@ -68,6 +69,7 @@ const endpoint = isSignup
         withCredentials: true,
       });
 
+      
       window.location.href = 'https://main.d2np3magzuj7ka.amplifyapp.com/';
     } catch (err) {
       const msg =
