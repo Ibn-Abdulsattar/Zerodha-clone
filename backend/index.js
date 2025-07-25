@@ -26,7 +26,9 @@ const yahooFinance = require('yahoo-finance2').default;
 const cron = require('node-cron');
 const wrapAsync = require('./utility/wrapAsync');
 
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"];
+const allowedOrigins = ["https://main.d1j2bhmi0fpcet.amplifyapp.com/#",
+  "https://main.d2np3magzuj7ka.amplifyapp.com/",
+  "https://main.d35r5otxvmb7vz.amplifyapp.com/"];
 
 app.use(
   cors({
@@ -107,7 +109,7 @@ app.use('/userApp', userAppRouter);
 app.use('/withdraw', protect, withdrawRouter);
 app.use('/user', userRouter);
 
-app.get('/user',protect,  async(req,res)=>{
+app.get('/user', protect, async (req, res) => {
   const user = await User.findById(req.user._id);
   res.send(user);
 });
