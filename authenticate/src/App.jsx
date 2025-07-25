@@ -57,8 +57,8 @@ function App() {
     console.log("Submitting form:", formData); // ADD THIS
 
 const endpoint = isSignup
-  ? "https://backend-env.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
-  : "https://backend-env.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signin";
+  ? "http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
+  : "http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signin";
 
 
     const payload = { ...formData };
