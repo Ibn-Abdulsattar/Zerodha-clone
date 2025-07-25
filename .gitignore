@@ -3,6 +3,9 @@ node_modules/
 **/node_modules/
 
 # Ignore all .env files anywhere
+node_modules.zip
+.elasticbeanstalk.zip
+backend.zip
 .env
 **/.env
 
