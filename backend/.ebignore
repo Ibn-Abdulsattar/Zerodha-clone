@@ -1,0 +1,8 @@
+node_modules
+venv
+eb-env
+.elasticbeanstalk
+*.log
+.env
+.git
+__pycache__/
