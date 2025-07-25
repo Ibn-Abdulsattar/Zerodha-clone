@@ -28,7 +28,7 @@ export default function Education() {
           justifyContent: "center",
         }}
       >
-        <Link href="https://www.babypips.com/learn"
+        <Link href="https://main.dunuolnoll92w.amplifyapp.com/funds"
           target="_blank"
         >
         <Box
@@ -65,7 +65,7 @@ export default function Education() {
           covering everything from the basics to advanced trading.
         </Typography>
         <Link
-          href="https://www.babypips.com/learn"
+          href="https://main.dunuolnoll92w.amplifyapp.com/funds"
           underline="none"
           target="_blank"
           rel="noopener"
@@ -78,7 +78,7 @@ export default function Education() {
           TradingQ&A, the most active trading and investment community in India for all your market related queries.
         </Typography>
         <Link
-          href="https://www.reddit.com/r/Trading/"
+          href="https://main.dunuolnoll92w.amplifyapp.com/funds"
           underline="none"
           target="_blank"
           rel="noopener"

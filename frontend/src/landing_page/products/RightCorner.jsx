@@ -41,6 +41,7 @@ export default function RightCorner({
               {Try && (
                 <Link
                   href={link}
+                  target='_blank'
                   sx={{
                     fontSize: "1.2rem",
                     fontWeight: 500,
@@ -58,7 +59,7 @@ export default function RightCorner({
           </Grid>
 
           <Grid sx={{ textAlign: "center", order: { xs: 1,md:2} }} size={{ md: 7, xs: 12 }}>
-            <Link href={link}>
+            <Link href={link} target='_blank'>
             <Box
               component="img"
               src={img}

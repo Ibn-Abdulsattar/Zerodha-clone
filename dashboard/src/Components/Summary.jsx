@@ -7,11 +7,11 @@ const Summary = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/fund/allFund", {withCredentials: true})
+      .get("http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/fund/allFund", {withCredentials: true})
       .then((res) => {setData(res.data)})
       .catch((err) => console.log(err));
 
-      axios.get('http://localhost:8080/user', { withCredentials: true })
+      axios.get('http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user', { withCredentials: true })
       .then(res => {setUser(res.data.username);})
       .catch(err => console.log(err));
   }, []);
@@ -20,7 +20,7 @@ const Summary = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/holding/allholdings", {withCredentials: true})
+      .get("http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/holding/allholdings", {withCredentials: true})
       .then((res) => {
         setAllHoldings(res.data);
       })

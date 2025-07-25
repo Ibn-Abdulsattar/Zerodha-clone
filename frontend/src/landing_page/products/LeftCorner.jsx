@@ -69,6 +69,7 @@ export default function LeftCorner({
               {Try && (
                 <Link
                   href="https://main.d2np3magzuj7ka.amplifyapp.com/"
+                  target='_blank'
                   sx={{
                     textDecoration: "none",
                     fontSize: "1.2rem",
@@ -83,6 +84,7 @@ export default function LeftCorner({
               )}
               {learn && (
                 <Link
+                target='_blank'
                   href={link}
                   sx={{
                     textDecoration: "none",
@@ -108,12 +110,12 @@ export default function LeftCorner({
               }}
             >
               {google && (
-                <Link href="https://play.google.com/store/apps?hl=en" sx={{ display: "inline-block" }}>
+                <Link href="https://play.google.com/store/apps?hl=en" target='_blank' sx={{ display: "inline-block" }}>
                   <Box component="img" src={google} width={150} alt="Google Play" />
                 </Link>
               )}
               {app && (
-                <Link href="https://www.apple.com/app-store/" sx={{ display: "inline-block" }}>
+                <Link href="https://www.apple.com/app-store/" target='_blank' sx={{ display: "inline-block" }}>
                   <Box component="img" src={app} width={140} alt="App Store" />
                 </Link>
               )}

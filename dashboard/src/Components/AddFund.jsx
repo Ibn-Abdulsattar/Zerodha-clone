@@ -30,7 +30,7 @@ const AddFund = () => {
 
     try {
       await axios.post(
-        "http://localhost:8080/fund/createfund",
+        "http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/fund/createfund",
         { amount, payMethod },
         { withCredentials: true }
       );

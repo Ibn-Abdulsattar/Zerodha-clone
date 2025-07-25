@@ -137,7 +137,7 @@ export default function Team() {
                       Homepage
                     </Link>{" "}
                     /{" "}
-                    <Link href="https://www.reddit.com/r/Trading/" underline="hover">
+                    <Link href="https://main.dunuolnoll92w.amplifyapp.com/" underline="hover">
                       TradingQnA
                     </Link>{" "}
                     /{" "}

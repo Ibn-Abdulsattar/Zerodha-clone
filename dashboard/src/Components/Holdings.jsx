@@ -7,7 +7,7 @@ const Holdings = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/holding/allholdings", {withCredentials: true})
+      .get("http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/holding/allholdings", {withCredentials: true})
       .then((res) => {
         setAllHoldings(res.data);
       })

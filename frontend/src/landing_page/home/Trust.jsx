@@ -121,7 +121,7 @@ export default function Trust() {
             <Link
               variant="h6"
               underline="none"
-              href="https://main.d2np3magzuj7ka.amplifyapp.com/"
+              href="https://main.dunuolnoll92w.amplifyapp.com/"
               sx={{ display: "flex", alignItems: "center" }}
             >
               Try Kite demo <ArrowRightAltIcon />
@@ -132,7 +132,7 @@ export default function Trust() {
 
       {/* Bottom Logos */}
       <Box sx={{ textAlign: "center", mt: 6 }}>
-        <Link href="https://www.brecorder.com/" sx={{ textDecoration: "none" }}>
+        <Link href="https://www.brecorder.com/" target='_blank' sx={{ textDecoration: "none" }}>
           <img
             src={pressLogos}
             alt="pressLogos"

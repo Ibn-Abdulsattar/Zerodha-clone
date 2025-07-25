@@ -56,7 +56,7 @@ const WatchListActions = ({ idRef, setShowWatchlistActions }) => {
 useEffect(() => {
   const cleanSymbol = idRef.endsWith(".NS") ? idRef : `${idRef}.NS`;
   axios
-    .get(`http://localhost:8080/api/price/${cleanSymbol}`, {withCredentials: true})
+    .get(`http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/api/price/${cleanSymbol}`, {withCredentials: true})
     .then((res) => {
       setPrice(res.data.price);
     })

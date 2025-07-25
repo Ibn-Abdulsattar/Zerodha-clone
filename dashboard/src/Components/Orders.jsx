@@ -16,7 +16,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/order/allorders", {withCredentials: true})
+      .get("http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/order/allorders", {withCredentials: true})
       .then((res) => setAllOrders(res.data))
       .catch((err) => {console.log(err)});
   }, []);

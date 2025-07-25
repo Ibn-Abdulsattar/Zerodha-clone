@@ -57,7 +57,7 @@ export default function ExploreAcounts() {
         <Grid container spacing={{ xs: 3, md: 4 }}>
           {accounts.map((account, idx) => (
             <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx}>
-              <Link href='https://main.d2np3magzuj7ka.amplifyapp.com/' sx={{textDecoration: "none"}}>
+              <Link href='https://main.dunuolnoll92w.amplifyapp.com/apps' target='_blank' sx={{textDecoration: "none"}}>
               <IndivAccount
                 icon={account.icon}
                 title={account.title}

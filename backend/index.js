@@ -26,9 +26,9 @@ const yahooFinance = require('yahoo-finance2').default;
 const cron = require('node-cron');
 const wrapAsync = require('./utility/wrapAsync');
 
-const allowedOrigins = ["https://main.d1j2bhmi0fpcet.amplifyapp.com/#",
-  "https://main.d2np3magzuj7ka.amplifyapp.com/",
-  "https://main.d35r5otxvmb7vz.amplifyapp.com/"];
+const allowedOrigins = ["https://main.d27cqj4o838ikf.amplifyapp.com/#",
+  "https://main.dunuolnoll92w.amplifyapp.com/",
+  "https://main.d3qkfg8ql8296h.amplifyapp.com/"];
 
 app.use(
   cors({

@@ -10,7 +10,7 @@ export default function Hero() {
   const [mobile, setMobile] = useState("");
 
   const handleSignup = () => {
-    window.open("https://main.d1j2bhmi0fpcet.amplifyapp.com/", "_blank", "noopener,noreferrer");
+    window.open("https://main.d27cqj4o838ikf.amplifyapp.com/#", "_blank", "noopener,noreferrer");
   };
 
   const isValidMobile = mobile.length >= 10 && mobile.length <= 11;

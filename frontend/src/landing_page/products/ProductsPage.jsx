@@ -55,7 +55,7 @@ export default function ProductsPage() {
       <Hero />
       <LeftCorner
         img={kite}
-        link='https://www.tradingview.com/pricing/?source=promo_go_pro_button'
+        link='https://main.dunuolnoll92w.amplifyapp.com/orders'
         title={products[0].title}
         description={products[0].description}
         Try={"Try demo"}
@@ -65,7 +65,7 @@ export default function ProductsPage() {
       />
       <RightCorner
         img={console}
-        link='https://www.smallcase.com/'
+        link='https://main.dunuolnoll92w.amplifyapp.com/holdings'
         title={products[1].title}
         description={products[1].description}
         Try={"Learn more"}
@@ -75,7 +75,7 @@ export default function ProductsPage() {
       />
       <LeftCorner
         img={coin}
-        link='https://www.etmoney.com/mutual-funds'
+        link='https://main.dunuolnoll92w.amplifyapp.com/positions'
         title={products[2].title}
         description={products[2].description}
         Try={"Coin"}
@@ -85,7 +85,7 @@ export default function ProductsPage() {
       />
       <RightCorner
         img={kiteconnect}
-        link='https://www.tradingview.com/pricing/?source=promo_go_pro_button'
+        link='https://main.dunuolnoll92w.amplifyapp.com/funds'
         title={products[3].title}
         description={products[3].description}
         Try={"Kite Connect"}
@@ -95,7 +95,7 @@ export default function ProductsPage() {
       />
       <LeftCorner
         img={varsity}
-        link='https://www.babypips.com/learn'
+        link='https://main.dunuolnoll92w.amplifyapp.com/apps'
         title={products[4].title}
         description={products[4].description}
         Try={"Try demo"}

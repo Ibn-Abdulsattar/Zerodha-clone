@@ -59,7 +59,7 @@ export default function InvestOption() {
             ></InvestCard>
           </Grid>
           <Grid item size={{ xs: 12 }} textAlign={"center"}>
-            <Link href="https://main.d2np3magzuj7ka.amplifyapp.com/">
+            <Link href="https://main.dunuolnoll92w.amplifyapp.com/orders" target='_blank'>
             <Button
             variant="contained"
             sx={{

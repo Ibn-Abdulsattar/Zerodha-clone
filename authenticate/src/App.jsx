@@ -57,8 +57,8 @@ function App() {
     console.log("Submitting form:", formData); // ADD THIS
 
 const endpoint = isSignup
-  ? "https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
-  : "https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signin";
+  ? "http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
+  : "http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signin";
 
 
     const payload = { ...formData };
@@ -70,7 +70,7 @@ const endpoint = isSignup
       });
 
       
-      window.location.href = 'https://main.d2np3magzuj7ka.amplifyapp.com/';
+      window.location.href = 'https://main.dunuolnoll92w.amplifyapp.com/';
     } catch (err) {
       const msg =
         err.response?.data?.msg || "Authentication failed. Try again.";

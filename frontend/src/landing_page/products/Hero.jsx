@@ -32,7 +32,8 @@ export default function Hero() {
           >
             Check out our{" "}
             <Link
-              href="https://main.d2np3magzuj7ka.amplifyapp.com/"
+              href="https://main.dunuolnoll92w.amplifyapp.com/"
+              target='_blank'
               underline="hover"
               sx={{
                 display: "inline-flex",
