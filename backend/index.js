@@ -3,7 +3,7 @@ if (process.env.NODE_ENV != 'production') {
 }
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 const mongoose = require('mongoose');
 const dbsurl = process.env.MONGO_URL;
 const Holding = require('./models/holding');
@@ -99,7 +99,9 @@ cron.schedule('30 16 * * *', async () => {
   }
 });
 
-
+app.get('/', (req, res)=>{
+  res.send('Server is runing!');
+})
 
 app.use('/holding', protect, holdingRouter);
 app.use('/fund', protect, fundRouter);
