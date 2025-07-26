@@ -14,7 +14,7 @@ const Holdings = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const labels = allHoldings.map((stock) => stock.name);
+  const labels = allHoldings.map((stock) => stock.name)
 
   const data = {
     labels,
@@ -34,7 +34,7 @@ const Holdings = () => {
 
   const totalCurrentValue = allHoldings.reduce((sum, stock) => {
     return sum + stock.price * stock.qty;
-  }, 0);
+  }, 0)
 
   const pnl = totalCurrentValue - totalInvest;
   const pnlPercent = totalInvest > 0 ? (pnl / totalInvest) * 100 : 0;
