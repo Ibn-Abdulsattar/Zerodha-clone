@@ -111,4 +111,4 @@ const AddFund = () => {
   );
 };
 
-export default AddFund;
+export default AddFund

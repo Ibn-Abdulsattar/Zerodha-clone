@@ -54,7 +54,6 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting form:", formData); // ADD THIS
 
 const endpoint = isSignup
   ? "http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
