@@ -56,8 +56,8 @@ function App() {
     e.preventDefault()
 
 const endpoint = isSignup
-  ? "http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
-  : "http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signin";
+  ? "https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signup"
+  : "https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/signin";
 
 
     const payload = { ...formData };

@@ -44,7 +44,7 @@ const TopMenu = () => {
   };
 
   const handleLogout = async () => {
-    await axios.post("http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/logout", null, {
+    await axios.post("https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/logout", null, {
       withCredentials: true,
     });
     window.location.href = "https://main.d35r5otxvmb7vz.amplifyapp.com/";

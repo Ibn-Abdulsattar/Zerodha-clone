@@ -6,7 +6,7 @@ const Positions = () => {
 
   useEffect(() => {
     axios
-      .get("http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/position/allpositions", {withCredentials: true})
+      .get("https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/position/allpositions", {withCredentials: true})
       .then((res) => {
         setAllPositions(res.data);
       })
