@@ -5,7 +5,6 @@ import sensibullLogo from "../../assets/image/sensibullLogo.svg";
 import streakLogo from "../../assets/image/streakLogo.png";
 import zerodhaFundhouse from "../../assets/image/zerodhaFundhouse.png";
 import tijori from "../../assets/image/tijori.png";
-import Link from "@mui/material/Link";
 
 export default function Universe() {
   const zerodha = [
