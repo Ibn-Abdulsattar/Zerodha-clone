@@ -1,11 +1,10 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
 
 export default function OpenAccount() {
-  const handleSignup=()=>{
-     window.open("https://main.d27cqj4o838ikf.amplifyapp.com/#", "_blank", "noopener,noreferrer");
-  }
+  
   return (
     <>
       <Box sx={{textAlign: "center", padding: "4rem", gap: "1rem", width: "98.8vw"}}>
@@ -16,6 +15,7 @@ export default function OpenAccount() {
           F&O trades.
         </Typography>
         <br />
+        <Link href='https://main.d27cqj4o838ikf.amplifyapp.com/' target='_blank' sx={{textDecoration: "none"}}>
         <Button
           style={{
             width: "200px",
@@ -30,6 +30,7 @@ export default function OpenAccount() {
         >
           Signup for free
         </Button>
+        </Link>
       </Box>
     </>
   );

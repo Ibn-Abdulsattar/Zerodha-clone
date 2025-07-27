@@ -26,9 +26,9 @@ const yahooFinance = require('yahoo-finance2').default;
 const cron = require('node-cron');
 const wrapAsync = require('./utility/wrapAsync');
 
-const allowedOrigins = ["https://main.d27cqj4o838ikf.amplifyapp.com/#",
-  "https://main.dunuolnoll92w.amplifyapp.com/",
-  "https://main.d3qkfg8ql8296h.amplifyapp.com/"];
+const allowedOrigins = ["https://main.d27cqj4o838ikf.amplifyapp.com",
+  "https://main.dunuolnoll92w.amplifyapp.com",
+  "https://main.d3qkfg8ql8296h.amplifyapp.com"];
 
 app.use(
   cors({
@@ -47,6 +47,9 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+// ✅ Handle preflight CORS requests
+app.options('*', cors());
+
 
 main()
   .then(res => console.log(`Connection successful`)

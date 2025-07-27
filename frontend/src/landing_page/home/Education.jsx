@@ -17,7 +17,7 @@ export default function Education() {
         py: { xs: 6, md: 12 },
         gap: 6,
         overflowX: "hidden",
-        backgroundColor: "#fff", // Optional: match Zerodha look
+        backgroundColor: "#fff", 
       }}
     >
       {/* Left side: Image */}

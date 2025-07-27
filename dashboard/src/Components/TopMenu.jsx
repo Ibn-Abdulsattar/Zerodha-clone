@@ -47,12 +47,12 @@ const TopMenu = () => {
     await axios.post("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/logout", null, {
       withCredentials: true,
     });
-    window.location.href = "https://main.d35r5otxvmb7vz.amplifyapp.com/";
+    window.location.href = "https://main.d3qkfg8ql8296h.amplifyapp.com/";
   };
 
   const handleSignup = () => {
     window.open(
-      "https://main.d1j2bhmi0fpcet.amplifyapp.com/",
+      "https://main.d27cqj4o838ikf.amplifyapp.com/",
       "_blank",
       "noopener,noreferrer"
     );

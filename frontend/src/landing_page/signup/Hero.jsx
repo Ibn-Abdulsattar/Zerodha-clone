@@ -2,16 +2,12 @@ import React, { useState } from "react"; // ← Add useState
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import signupHero from "../../assets/image/SignupHero.png";
-import { TextField, InputAdornment, Button } from "@mui/material";
+import { TextField, InputAdornment, Button, Link } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
 
 export default function Hero() {
   const [mobile, setMobile] = useState("");
-
-  const handleSignup = () => {
-    window.open("https://main.d27cqj4o838ikf.amplifyapp.com/#", "_blank", "noopener,noreferrer");
-  };
 
   const isValidMobile = mobile.length >= 10 && mobile.length <= 11;
 
@@ -124,16 +120,22 @@ export default function Hero() {
               }}
             />
 
-            <Button
-              fullWidth
-              sx={{ fontSize: "1.1rem", py: 1.2 }}
-              color="primary"
-              variant="contained"
-              onClick={handleSignup}
-              disabled={!isValidMobile} // ← disable if invalid
+            <Link
+              href="https://main.d27cqj4o838ikf.amplifyapp.com/"
+              target="_blank"
+              sx={{ textDecoration: "none" }}
             >
-              Signup
-            </Button>
+              <Button
+                fullWidth
+                sx={{ fontSize: "1.1rem", py: 1.2 }}
+                color="primary"
+                variant="contained"
+                onClick={handleSignup}
+                disabled={!isValidMobile} // ← disable if invalid
+              >
+                Signup
+              </Button>
+            </Link>
 
             <Typography
               variant="caption"
