@@ -2,12 +2,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 
 export default function Invest() {
 
-  const handleSignup=()=>{
-     window.open("https://main.d27cqj4o838ikf.amplifyapp.com/", "_blank", "noopener,noreferrer");
-  }
+
   return (
     <>
       <Box sx={{ padding: "1.5rem" }}>
@@ -38,6 +37,7 @@ export default function Invest() {
           }}
         >
           <br />
+          <Link href='https://main.d27cqj4o838ikf.amplifyapp.com/' target='_blank'>
           <Button
             style={{
               width: "200px",
@@ -48,10 +48,11 @@ export default function Invest() {
             }}
             variant="contained"
             color="primary"
-            onClick={handleSignup}
+            
           >
             Signup for free
           </Button>
+          </Link>
         </Stack>
       </Box>
     </>

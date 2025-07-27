@@ -130,7 +130,6 @@ export default function Hero() {
                 sx={{ fontSize: "1.1rem", py: 1.2 }}
                 color="primary"
                 variant="contained"
-                onClick={handleSignup}
                 disabled={!isValidMobile} // ← disable if invalid
               >
                 Signup

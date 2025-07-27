@@ -5,6 +5,7 @@ import sensibullLogo from "../../assets/image/sensibullLogo.svg";
 import streakLogo from "../../assets/image/streakLogo.png";
 import zerodhaFundhouse from "../../assets/image/zerodhaFundhouse.png";
 import tijori from "../../assets/image/tijori.png";
+import Link from "@mui/material/Link";
 
 export default function Universe() {
   const zerodha = [
@@ -46,9 +47,7 @@ export default function Universe() {
     },
   ];
 
-  const handleSignup=()=>{
-     window.open("https://main.d27cqj4o838ikf.amplifyapp.com/#", "_blank", "noopener,noreferrer");
-  }
+
   return (
     <Box sx={{ width: "98.8vw" }}>
       <Container sx={{ textAlign: "center", mb: "5rem" }}>
@@ -91,6 +90,8 @@ export default function Universe() {
             </Grid>
           ))}
         </Grid>
+
+        <Link href='https://main.d27cqj4o838ikf.amplifyapp.com/' target="_blank">
         <Button
           style={{
             width: "200px",
@@ -101,10 +102,10 @@ export default function Universe() {
           }}
           variant="contained"
           color="primary"
-          onClick={handleSignup}
         >
           Signup for free
         </Button>
+        </Link>
       </Container>
     </Box>
   );

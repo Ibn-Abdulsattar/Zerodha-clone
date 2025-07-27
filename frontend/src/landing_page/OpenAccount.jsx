@@ -26,7 +26,7 @@ export default function OpenAccount() {
           }}
           variant="contained"
           color="primary"
-            onClick={handleSignup}
+            
         >
           Signup for free
         </Button>

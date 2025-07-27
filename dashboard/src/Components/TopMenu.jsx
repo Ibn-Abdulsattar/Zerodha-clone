@@ -50,14 +50,6 @@ const TopMenu = () => {
     window.location.href = "https://main.d3qkfg8ql8296h.amplifyapp.com/";
   };
 
-  const handleSignup = () => {
-    window.open(
-      "https://main.d27cqj4o838ikf.amplifyapp.com/",
-      "_blank",
-      "noopener,noreferrer"
-    );
-  };
-
   useEffect(() => {
     axios
       .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user", { withCredentials: true })
@@ -150,7 +142,9 @@ const TopMenu = () => {
               </>
             ) : (
               <>
-                <MenuItem onClick={handleSignup}>🔓 Signup</MenuItem>
+              <Link sx={{textDecoration : "none"}} href='https://main.d27cqj4o838ikf.amplifyapp.com/' target='_blank'>
+                <MenuItem >🔓 Signup</MenuItem>
+                </Link>
               </>
             )}
           </Menu>
