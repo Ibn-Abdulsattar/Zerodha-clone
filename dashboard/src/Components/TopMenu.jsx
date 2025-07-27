@@ -44,7 +44,7 @@ const TopMenu = () => {
   };
 
   const handleLogout = async () => {
-    await axios.post("https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/user/logout", null, {
+    await axios.post("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/logout", null, {
       withCredentials: true,
     });
     window.location.href = "https://main.d35r5otxvmb7vz.amplifyapp.com/";
@@ -60,7 +60,7 @@ const TopMenu = () => {
 
   useEffect(() => {
     axios
-      .get("/user", { withCredentials: true })
+      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user", { withCredentials: true })
       .then((res) => setAuthor(res.data));
   }, []);
 

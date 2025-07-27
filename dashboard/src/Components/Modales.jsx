@@ -30,7 +30,7 @@ const Modales = ({
 useEffect(() => {
   const cleanSymbol = idRef.endsWith(".NS") ? idRef : `${idRef}.NS`;
   axios
-    .get(`https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/api/price/${cleanSymbol}`, {withCredentials: true})
+    .get(`https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/${cleanSymbol}`, {withCredentials: true})
     .then((res) => {
       setPrice(res.data.price);
     })
@@ -47,7 +47,7 @@ useEffect(() => {
       const qty = formData.get("qty");
       const price = formData.get("price");
 
-      await axios.post("https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/order/createOrder", {
+      await axios.post("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/order/createOrder", {
         name,
         qty,
         price,

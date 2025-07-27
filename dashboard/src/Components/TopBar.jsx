@@ -7,7 +7,7 @@ const TopBar = () => {
 
   useEffect(() => {
     axios
-      .get(`https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/api/price/^NSEI`, {withCredentials: true})
+      .get(`https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/^NSEI`, {withCredentials: true})
       .then((res) => {
         setNifty(res.data.price);
       })
@@ -18,7 +18,7 @@ const TopBar = () => {
 
   useEffect(() => {
     axios
-      .get(`https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/api/price/^BSESN`, {withCredentials: true})
+      .get(`https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/^BSESN`, {withCredentials: true})
       .then((res) => {
         setSensex(res.data.price);
       })

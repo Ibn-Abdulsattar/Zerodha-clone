@@ -9,7 +9,7 @@ const Withdraw = () => {
 
   useEffect(() => {
     axios
-      .get("https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/fund/allFund", {withCredentials: true})
+      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/fund/allFund", {withCredentials: true})
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -37,7 +37,7 @@ const Withdraw = () => {
     const withdraw = new FormData(e.target);
     const withdraw_amount = withdraw.get("withdraw_amount");
 
-    axios.post("https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/withdraw/withdraw", {
+    axios.post("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/withdraw/withdraw", {
       withdraw_amount,
     }, {withCredentials: true});
 

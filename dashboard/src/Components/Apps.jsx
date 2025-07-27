@@ -13,7 +13,7 @@ const Apps = () => {
 
   useEffect(() => {
     axios
-      .get("https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/userApp/user-apps")
+      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/userApp/user-apps")
       .then((res) => setApps(res.data))
       .catch((err) => {
         console.log(err);
@@ -23,9 +23,9 @@ const Apps = () => {
 const handleToggle = async (appId, action) => {
   const endpoint = action === "connect" ? "user-apps/connect" : "user-apps/disconnect";
 
-  await axios.post(`https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/userApp/${endpoint}`, { appId });
+  await axios.post(`https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/userApp/${endpoint}`, { appId });
 
-  const res = await axios.get("https://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/userApp/user-apps");
+  const res = await axios.get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/userApp/user-apps");
   setApps(res.data);
 };
 

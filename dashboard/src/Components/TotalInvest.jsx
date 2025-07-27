@@ -6,7 +6,7 @@ const TotalInvest = () => {
 
   useEffect(() => {
     axios
-      .get("http://zerodha-clone-backend.eba-fe3juwiv.ap-south-1.elasticbeanstalk.com/fund/allFund", {withCredentials: true})
+      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/fund/allFund", {withCredentials: true})
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
