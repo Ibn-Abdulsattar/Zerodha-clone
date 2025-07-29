@@ -120,6 +120,7 @@ export default function Trust() {
             </Link>
             <Link
               variant="h6"
+              target='_blank'
               underline="none"
               href="https://main.dunuolnoll92w.amplifyapp.com/"
               sx={{ display: "flex", alignItems: "center" }}
