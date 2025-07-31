@@ -71,8 +71,8 @@ const endpoint = isSignup
       
       window.location.href = 'https://main.dunuolnoll92w.amplifyapp.com/';
     } catch (err) {
-      const msg =
-        err.response?.data?.msg || "Authentication failed. Try again.";
+      const msg = err.response?.data?.msg || err.response?.data?.message || "Authentication failed.";
+
       setError(msg);
     }
   };
