@@ -65,7 +65,9 @@ const endpoint = isSignup
 
     try {
       const res = await axios.post(endpoint, payload, {
-        withCredentials: true
+        withCredentials: true,  headers: {
+    'Content-Type': 'application/json' // ✅ Required for AWS Lambda to parse req.body correctly
+  }
       });
 
       
