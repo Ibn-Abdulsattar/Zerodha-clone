@@ -1,7 +1,8 @@
- const wrapAsync = (fnx)=>{
-return (req, res, next)=>{
+// utility/wrapAsync.js
+const wrapAsync = (fnx) => {
+  return (req, res, next) => {
     fnx(req, res, next).catch(next);
-}
-}
+  };
+};
 
-module.exports = wrapAsync;
+export default wrapAsync;

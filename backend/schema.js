@@ -1,59 +1,59 @@
-const joi = require('joi');
+import Joi from 'joi';
 
-module.exports.fundSchema = joi.object({
-    amount: joi.number().min(5).required(),
-    payMethod: joi.string().required(),
-    availableMargin: joi.number().default(0),
-    usedMargin: joi.number().default(0),
-    availableCash: joi.number().default(0),
-    payin: joi.number().default(0)
+export const fundSchema = Joi.object({
+  amount: Joi.number().min(5).required(),
+  payMethod: Joi.string().required(),
+  availableMargin: Joi.number().default(0),
+  usedMargin: Joi.number().default(0),
+  availableCash: Joi.number().default(0),
+  payin: Joi.number().default(0),
 });
 
-module.exports.holdingSchema = joi.object({
-    name: joi.string().trim().required(),
-    qty: joi.number().min(1).required(),
-    avg: joi.number().required(),
-    price: joi.number().min(1).required(),
-    net: joi.string().trim().required(),
-    day: joi.string().trim().required(),
+export const holdingSchema = Joi.object({
+  name: Joi.string().trim().required(),
+  qty: Joi.number().min(1).required(),
+  avg: Joi.number().required(),
+  price: Joi.number().min(1).required(),
+  net: Joi.string().trim().required(),
+  day: Joi.string().trim().required(),
 });
 
-module.exports.orderSchema = joi.object({
-    name: joi.string().trim().required(),
-    qty: joi.number().min(1).required(),
-    price: joi.number().min(1).required(),
-    mode: joi.string().valid('Buy', 'Sell').required()
+export const orderSchema = Joi.object({
+  name: Joi.string().trim().required(),
+  qty: Joi.number().min(1).required(),
+  price: Joi.number().min(1).required(),
+  mode: Joi.string().valid('Buy', 'Sell').required(),
 });
 
-module.exports.positionSchema = joi.object({
-    product: joi.string().trim().required(),
-    name: joi.string().trim().required(),
-    qty: joi.number().min(1).required(),
-    avg: joi.number().required(),
-    mode: joi.string().trim().required(),
-    price: joi.number().min(1).required(),
-    net: joi.string().trim().required(),
-    day: joi.string().trim().required(),
-    isLoss: joi.boolean().default(false)
+export const positionSchema = Joi.object({
+  product: Joi.string().trim().required(),
+  name: Joi.string().trim().required(),
+  qty: Joi.number().min(1).required(),
+  avg: Joi.number().required(),
+  mode: Joi.string().trim().required(),
+  price: Joi.number().min(1).required(),
+  net: Joi.string().trim().required(),
+  day: Joi.string().trim().required(),
+  isLoss: Joi.boolean().default(false),
 });
 
-module.exports.userAppSchema = joi.object({
-    userId: joi.string().required(),
-    name: joi.string().trim().required(),
-    description: joi.string().trim().required(),
-    connected: joi.boolean().default(false)
+export const userAppSchema = Joi.object({
+  userId: Joi.string().required(),
+  name: Joi.string().trim().required(),
+  description: Joi.string().trim().required(),
+  connected: Joi.boolean().default(false),
 });
 
-module.exports.withdrawSchema = joi.object({
-    withdraw_amount: joi.number().min(1).required()
+export const withdrawSchema = Joi.object({
+  withdraw_amount: Joi.number().min(1).required(),
 });
 
-module.exports.userSchema = joi.object({
-    username: joi.string().trim(),
-    email: joi.string().trim().required(),
-    password: joi.string().trim().required(),
+export const userSchema = Joi.object({
+  username: Joi.string().trim(),
+  email: Joi.string().trim().required(),
+  password: Joi.string().trim().required(),
 });
 
-module.exports.toggleUserAppSchema = joi.object({
-  appId: joi.string().required()
+export const toggleUserAppSchema = Joi.object({
+  appId: Joi.string().required(),
 });

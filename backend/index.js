@@ -1,71 +1,74 @@
-if (process.env.NODE_ENV != 'production') {
-  require('dotenv').config();
+// server.js (Node.js 22.x ESM)
+import dotenv from 'dotenv';
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
 }
-const express = require('express');
+
+import express from 'express';
+import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import cron from 'node-cron';
+import yahooFinance from 'yahoo-finance2';
+import wrapAsync from './utility/wrapAsync.js';
+
+import Holding from './models/holding.js';
+import Position from './models/position.js';
+import Fund from './models/fund.js';
+import User from './models/user.js';
+
+import fundRouter from './routes/fundRoutes.js';
+import holdingRouter from './routes/holdingRoutes.js';
+import positionRouter from './routes/positionRoutes.js';
+import userAppRouter from './routes/userAppRoutes.js';
+import withdrawRouter from './routes/withdrawRoutes.js';
+import orderRouter from './routes/orderRoutes.js';
+import userRouter from './routes/userRoutes.js';
+
+import { protect } from './middleware.js';
+
 const app = express();
 const port = process.env.PORT || 8080;
-const mongoose = require('mongoose');
 const dbsurl = process.env.MONGO_URL;
-const Holding = require('./models/holding');
-const Position = require('./models/position');
-const Fund = require('./models/fund');
-const User = require('./models/user');
 
-const fundRouter = require('./routes/fund');
-const holdingRouter = require('./routes/holding');
-const positionRouter = require('./routes/position');
-const userAppRouter = require('./routes/userApp');
-const withdrawRouter = require('./routes/withdraw');
-const orderRouter = require('./routes/order');
-const userRouter = require('./routes/user');
-const { protect } = require('./middleware');
-const cookieParser = require('cookie-parser');
-
-const cors = require('cors')
-const yahooFinance = require('yahoo-finance2').default;
-const cron = require('node-cron');
-const wrapAsync = require('./utility/wrapAsync');
-
-const allowedOrigins = ["https://main.d27cqj4o838ikf.amplifyapp.com",
+const allowedOrigins = [
+  "https://main.d27cqj4o838ikf.amplifyapp.com",
   "https://main.dunuolnoll92w.amplifyapp.com",
-  "https://main.d3qkfg8ql8296h.amplifyapp.com"];
+  "https://main.d3qkfg8ql8296h.amplifyapp.com"
+];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
-
+// Middleware
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-// ✅ Handle preflight CORS requests
-app.options('*', cors());
+// app.options('*', cors()); // Handle preflight requests
 
-
+// MongoDB Connection
 main()
-  .then(res => console.log(`Connection successful`)
-  )
-  .catch(err => console.log(err));
+  .then(() => console.log(`✅ MongoDB connection successful`))
+  .catch(err => console.error(`❌ MongoDB connection error:`, err));
 
 async function main() {
   await mongoose.connect(dbsurl);
-};
+}
 
+// CRON Job (runs every day at 4:30 PM server time)
 cron.schedule('30 16 * * *', async () => {
   try {
-    const users = await User.find({}); // Get all users
+    const users = await User.find({});
 
     for (const user of users) {
-      // Move positions to holdings for this user
       const userPositions = await Position.find({ user: user._id, mode: 'Buy' });
 
       for (const position of userPositions) {
@@ -74,7 +77,6 @@ cron.schedule('30 16 * * *', async () => {
         await Position.deleteOne({ _id: position._id });
       }
 
-      // Update the user's fund
       const start = new Date();
       start.setHours(0, 0, 0, 0);
       const end = new Date();
@@ -102,10 +104,12 @@ cron.schedule('30 16 * * *', async () => {
   }
 });
 
-app.get('/', (req, res)=>{
-  res.send('Server is runing!');
-})
+// Health Check
+app.get('/', (req, res) => {
+  res.send('✅ Server is running!');
+});
 
+// Routes
 app.use('/holding', protect, holdingRouter);
 app.use('/fund', protect, fundRouter);
 app.use('/order', protect, orderRouter);
@@ -114,13 +118,15 @@ app.use('/userApp', userAppRouter);
 app.use('/withdraw', protect, withdrawRouter);
 app.use('/user', userRouter);
 
+// Current User Info
 app.get('/user', protect, async (req, res) => {
   const user = await User.findById(req.user._id);
   res.send(user);
 });
 
+// Live Market Price API
 app.get('/api/price/:symbol', protect, wrapAsync(async (req, res) => {
-  let { symbol } = req.params;
+  const { symbol } = req.params;
   const result = await yahooFinance.quote(symbol);
 
   if (!result || !result.regularMarketPrice) {
@@ -131,20 +137,19 @@ app.get('/api/price/:symbol', protect, wrapAsync(async (req, res) => {
   }
 
   const { regularMarketPrice, currency } = result;
-  res.json({
-    price: regularMarketPrice,
-    currency: currency,
-  });
+  res.json({ price: regularMarketPrice, currency });
 }));
 
-
+// Global Error Handler
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({
     error: err.name || "InternalServerError",
     message: err.message || "Something went wrong!",
-  })
+  });
 });
 
+
+// Start Server
 app.listen(port, () => {
-  console.log(`App is listening on port: ${port}`);
+  console.log(`🚀 Server listening on port ${port}`);
 });

@@ -1,99 +1,74 @@
-const { fundSchema, holdingSchema, orderSchema, } = require('./schema.js');
-const { positionSchema, userAppSchema, withdrawSchema, userSchema} = require('./schema.js');
-const { toggleUserAppSchema } = require('./schema');
-const ExpressError = require('./utility/expressError.js');
-const User = require('./models/user.js');
-const jwt = require('jsonwebtoken');
+// middleware.js
+import {
+  fundSchema,
+  holdingSchema,
+  orderSchema,
+  positionSchema,
+  userAppSchema,
+  withdrawSchema,
+  userSchema,
+  toggleUserAppSchema
+} from './schema.js';
 
+import ExpressError from './utility/expressError.js';
+import User from './models/user.js';
+import jwt from 'jsonwebtoken';
 
-module.exports.validateFund = (req, res, next) => {
-    let { error } = fundSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map((el) => el.message).join(', ');
-        throw new ExpressError(400, msg);
-    } else {
-        next()
-    }
+// 📌 Validation Middleware
+const validateFund = (req, res, next) => {
+  const { error } = fundSchema.validate(req.body);
+  if (error) throw new ExpressError(error.details.map(el => el.message).join(', '), 400);
+  next();
 };
 
-module.exports.validateHolding = (req, res, next) => {
-    let { error } = holdingSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map((el) => el.message).join(', ');
-        throw new ExpressError(400, msg);
-    } else {
-        next()
-    }
+const validateHolding = (req, res, next) => {
+  const { error } = holdingSchema.validate(req.body);
+  if (error) throw new ExpressError(error.details.map(el => el.message).join(', '), 400);
+  next();
 };
 
-module.exports.validateOrder = (req, res, next) => {
-    let { error } = orderSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map((el) => el.message).join(', ');
-        throw new ExpressError(400, msg);
-    } else {
-        next()
-    }
+const validateOrder = (req, res, next) => {
+  const { error } = orderSchema.validate(req.body);
+  if (error) throw new ExpressError(error.details.map(el => el.message).join(', '), 400);
+  next();
 };
 
-module.exports.validatePosition = (req, res, next) => {
-    let { error } = positionSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map((el) => el.message).join(', ');
-        throw new ExpressError(400, msg);
-    } else {
-        next()
-    }
+const validatePosition = (req, res, next) => {
+  const { error } = positionSchema.validate(req.body);
+  if (error) throw new ExpressError(error.details.map(el => el.message).join(', '), 400);
+  next();
 };
 
-
-
-module.exports.validateUserApp = (req, res, next) => {
-    const { error } = userAppSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map((el) => el.message).join(', ');
-        throw new ExpressError(400, msg);
-    }
-    next();
+const validateUserApp = (req, res, next) => {
+  const { error } = userAppSchema.validate(req.body);
+  if (error) throw new ExpressError(error.details.map(el => el.message).join(', '), 400);
+  next();
 };
 
-module.exports.validateToggleUserApp = (req, res, next) => {
-    const { error } = toggleUserAppSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map((el) => el.message).join(', ');
-        throw new ExpressError(400, msg);
-    }
-    next();
+const validateToggleUserApp = (req, res, next) => {
+  const { error } = toggleUserAppSchema.validate(req.body);
+  if (error) throw new ExpressError(error.details.map(el => el.message).join(', '), 400);
+  next();
 };
 
-
-
-module.exports.validateWithdraw = (req, res, next) => {
-    let { error } = withdrawSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map((el) => el.message).join(', ');
-        throw new ExpressError(400, msg);
-    } else {
-        next()
-    }
+const validateWithdraw = (req, res, next) => {
+  const { error } = withdrawSchema.validate(req.body);
+  if (error) throw new ExpressError(error.details.map(el => el.message).join(', '), 400);
+  next();
 };
 
-module.exports.validateUser = (req, res, next) => {
-    let { error } = userSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map((el) => el.message).join(', ');
-        throw new ExpressError(400, msg);
-    } else {
-        next()
-    }
+const validateUser = (req, res, next) => {
+  const { error } = userSchema.validate(req.body);
+  if (error) throw new ExpressError(error.details.map(el => el.message).join(', '), 400);
+  next();
 };
 
-
-module.exports.protect = async (req, res, next) => {
+// 🔐 JWT Authentication Middleware
+const protect = async (req, res, next) => {
   const token = req.cookies.token;
 
   if (!token) {
-    throw new ExpressError(401, 'Unauthorized: Token missing');
+    throw new ExpressError('Unauthorized: Token missing', 401);
   }
 
   try {
@@ -101,12 +76,25 @@ module.exports.protect = async (req, res, next) => {
     const user = await User.findById(decoded.id).select('-password');
 
     if (!user) {
-      throw new ExpressError(401, 'User not found');
+      throw new ExpressError('User not found', 401);
     }
 
     req.user = user;
     next();
   } catch (err) {
-    throw new ExpressError(401, 'Invalid or expired token');
+    throw new ExpressError('Invalid or expired token', 401);
   }
+};
+
+// ✅ Export All Middleware Functions
+export {
+  validateFund,
+  validateHolding,
+  validateOrder,
+  validatePosition,
+  validateUserApp,
+  validateToggleUserApp,
+  validateWithdraw,
+  validateUser,
+  protect
 };
