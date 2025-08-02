@@ -4,26 +4,31 @@ import TopMenu from "./TopMenu";
 
 const TopBar = () => {
   const [nifty, setNifty] = useState(1);
-
-  useEffect(() => {
-    axios
-      .get(`https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/^NSEI`, {withCredentials: true})
-      .then((res) => {
-        setNifty(res.data.price);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
   const [sensex, setSensex] = useState(1);
 
   useEffect(() => {
-    axios
-      .get(`https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/^BSESN`, {withCredentials: true})
-      .then((res) => {
-        setSensex(res.data.price);
-      })
-      .catch((err) => console.log(err));
+    const fetchPrices = async () => {
+      try {
+        const [niftyRes, sensexRes] = await Promise.all([
+          axios.get(
+            "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/^NSEI",
+            { withCredentials: true }
+          ),
+          axios.get(
+            "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/^BSESN",
+            { withCredentials: true }
+          ),
+        ]);
+        setNifty(niftyRes.data.price);
+        setSensex(sensexRes.data.price);
+      } catch (err) {
+        console.error("Error fetching index prices:", err);
+      }
+    };
+
+    fetchPrices();
   }, []);
+
   return (
     <div className="topbar-container">
       <div className="indices-container">

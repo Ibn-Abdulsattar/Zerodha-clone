@@ -64,7 +64,7 @@ useEffect(() => {
 
       setShowWatchlistActions?.(false);
     } catch (err) {
-      alert("Are you sure that you are registere!");
+      alert(err);
     }
   };
 
