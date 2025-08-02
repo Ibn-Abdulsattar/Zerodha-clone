@@ -44,15 +44,24 @@ const TopMenu = () => {
   };
 
   const handleLogout = async () => {
-    await axios.post("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/logout", null, {
-      withCredentials: true,
-    });
+    await axios.post(
+      "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/logout",
+      null,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
     window.location.href = "https://main.d3qkfg8ql8296h.amplifyapp.com/";
   };
 
   useEffect(() => {
     axios
-      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user", { withCredentials: true })
+      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user", {
+        withCredentials: true,
+      })
       .then((res) => setAuthor(res.data));
   }, []);
 
@@ -142,8 +151,12 @@ const TopMenu = () => {
               </>
             ) : (
               <>
-              <Link sx={{textDecoration : "none"}} href='https://main.d27cqj4o838ikf.amplifyapp.com/' target='_blank'>
-                <MenuItem >🔓 Signup</MenuItem>
+                <Link
+                  sx={{ textDecoration: "none" }}
+                  href="https://main.d27cqj4o838ikf.amplifyapp.com/"
+                  target="_blank"
+                >
+                  <MenuItem>🔓 Signup</MenuItem>
                 </Link>
               </>
             )}

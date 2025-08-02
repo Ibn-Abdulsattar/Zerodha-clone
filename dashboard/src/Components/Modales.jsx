@@ -52,7 +52,12 @@ useEffect(() => {
         qty,
         price,
         mode,
-      }, {withCredentials: true});
+      },  {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
 
       setModalType(null);
       setOpen(false);

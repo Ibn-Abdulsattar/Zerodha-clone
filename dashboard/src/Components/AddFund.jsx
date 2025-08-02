@@ -1,7 +1,16 @@
 import { useState } from "react";
 import {
-  Modal, Box, Button, Link, TextField, Typography,
-  InputLabel, MenuItem, FormControl, Select, FormHelperText
+  Modal,
+  Box,
+  Button,
+  Link,
+  TextField,
+  Typography,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select,
+  FormHelperText,
 } from "@mui/material";
 import axios from "axios";
 
@@ -32,7 +41,12 @@ const AddFund = () => {
       await axios.post(
         "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/fund/createfund",
         { amount, payMethod },
-        { withCredentials: true }
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
       );
       handleClose();
     } catch (err) {
@@ -97,7 +111,9 @@ const AddFund = () => {
                   <MenuItem value="Jazzcash">Jazz cash</MenuItem>
                 </Select>
                 {payMethodError && (
-                  <FormHelperText>Please select a payment method</FormHelperText>
+                  <FormHelperText>
+                    Please select a payment method
+                  </FormHelperText>
                 )}
               </FormControl>
             </Box>
@@ -111,4 +127,4 @@ const AddFund = () => {
   );
 };
 
-export default AddFund
+export default AddFund;

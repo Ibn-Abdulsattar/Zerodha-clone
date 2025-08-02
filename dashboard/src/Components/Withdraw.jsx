@@ -9,7 +9,10 @@ const Withdraw = () => {
 
   useEffect(() => {
     axios
-      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/fund/allFund", {withCredentials: true})
+      .get(
+        "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/fund/allFund",
+        { withCredentials: true }
+      )
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -37,9 +40,18 @@ const Withdraw = () => {
     const withdraw = new FormData(e.target);
     const withdraw_amount = withdraw.get("withdraw_amount");
 
-    axios.post("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/withdraw/withdraw", {
-      withdraw_amount,
-    }, {withCredentials: true});
+    axios.post(
+      "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/withdraw/withdraw",
+      {
+        withdraw_amount,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
 
     handleCloseWithdraw();
   };
@@ -108,7 +120,9 @@ const Withdraw = () => {
 
             {/* Withdraw Button */}
             <Box sx={{ textAlign: "center" }}>
-              <Button type="submit" variant="outlined">Withdraw</Button>
+              <Button type="submit" variant="outlined">
+                Withdraw
+              </Button>
             </Box>
           </form>
         </Box>

@@ -23,7 +23,12 @@ const Apps = () => {
 const handleToggle = async (appId, action) => {
   const endpoint = action === "connect" ? "user-apps/connect" : "user-apps/disconnect";
 
-  await axios.post(`https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/userApp/${endpoint}`, { appId });
+  await axios.post(`https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/userApp/${endpoint}`, { appId },  {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
 
   const res = await axios.get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/userApp/user-apps");
   setApps(res.data);
