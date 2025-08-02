@@ -7,11 +7,11 @@ const Summary = () => {
 
   useEffect(() => {
     axios
-      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/fund/allFund", {withCredentials: true})
+      .get("https://zerodha-clone-backend-h8ie.onrender.com/fund/allFund", {withCredentials: true})
       .then((res) => {setData(res.data)})
       .catch((err) => console.log(err));
 
-      axios.get('https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user', { withCredentials: true })
+      axios.get('https://zerodha-clone-backend-h8ie.onrender.com/user', { withCredentials: true })
       .then(res => {setUser(res.data.username);})
       .catch(err => console.log(err));
   }, []);
@@ -20,7 +20,7 @@ const Summary = () => {
 
   useEffect(() => {
     axios
-      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/holding/allholdings", {withCredentials: true})
+      .get("https://zerodha-clone-backend-h8ie.onrender.com/holding/allholdings", {withCredentials: true})
       .then((res) => {
         setAllHoldings(res.data);
       })

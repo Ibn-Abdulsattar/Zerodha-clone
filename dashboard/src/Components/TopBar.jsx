@@ -11,11 +11,11 @@ const TopBar = () => {
       try {
         const [niftyRes, sensexRes] = await Promise.all([
           axios.get(
-            "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/^NSEI",
+            "https://zerodha-clone-backend-h8ie.onrender.com/api/price/^NSEI",
             { withCredentials: true }
           ),
           axios.get(
-            "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/^BSESN",
+            "https://zerodha-clone-backend-h8ie.onrender.com/api/price/^BSESN",
             { withCredentials: true }
           ),
         ]);

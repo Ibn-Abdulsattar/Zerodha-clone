@@ -56,8 +56,8 @@ function App() {
     e.preventDefault()
 
 const endpoint = isSignup
-  ? "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/signup"
-  : "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/signin";
+  ? "https://zerodha-clone-backend-h8ie.onrender.com/user/signup"
+  : "https://zerodha-clone-backend-h8ie.onrender.com/user/signin";
 
 
     const payload = { ...formData };

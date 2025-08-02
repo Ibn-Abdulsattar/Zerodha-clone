@@ -10,7 +10,7 @@ const Withdraw = () => {
   useEffect(() => {
     axios
       .get(
-        "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/fund/allFund",
+        "https://zerodha-clone-backend-h8ie.onrender.com/fund/allFund",
         { withCredentials: true }
       )
       .then((res) => setData(res.data))
@@ -41,7 +41,7 @@ const Withdraw = () => {
     const withdraw_amount = withdraw.get("withdraw_amount");
 
     axios.post(
-      "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/withdraw/withdraw",
+      "https://zerodha-clone-backend-h8ie.onrender.com/withdraw/withdraw",
       {
         withdraw_amount,
       },

@@ -45,7 +45,7 @@ const TopMenu = () => {
 
   const handleLogout = async () => {
     await axios.post(
-      "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/logout",
+      "https://zerodha-clone-backend-h8ie.onrender.com/user/logout",
       null,
       {
         headers: {
@@ -59,7 +59,7 @@ const TopMenu = () => {
 
   useEffect(() => {
     axios
-      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user", {
+      .get("https://zerodha-clone-backend-h8ie.onrender.com/user", {
         withCredentials: true,
       })
       .then((res) => setAuthor(res.data));
