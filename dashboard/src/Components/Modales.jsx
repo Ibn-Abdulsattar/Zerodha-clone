@@ -47,7 +47,7 @@ useEffect(() => {
       const qty = formData.get("qty");
       const price = formData.get("price");
 
-      await axios.post("https://zerodha-clone-backend-h8ie.onrender.com/order/createOrder", {
+      await axios.post("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/order/createOrder", {
         name,
         qty,
         price,
