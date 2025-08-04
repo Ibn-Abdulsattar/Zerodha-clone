@@ -131,7 +131,7 @@ app.use('/withdraw', protect, withdrawRouter);
 app.use('/user', userRouter);
 
 // Current User Info
-app.get('/user', protect, async (req, res) => {
+app.get('/me', protect, async (req, res) => {
   const user = await User.findById(req.user._id);
   res.send(user);
 });

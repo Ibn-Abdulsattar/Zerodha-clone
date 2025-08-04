@@ -59,7 +59,7 @@ const TopMenu = () => {
 
   useEffect(() => {
     axios
-      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user", {
+      .get("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/me", {
         withCredentials: true,
       })
       .then((res) => setAuthor(res.data));
