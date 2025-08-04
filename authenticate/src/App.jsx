@@ -19,11 +19,13 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import CircularProgress from '@mui/material/CircularProgress';
 import "./App.css";
 
 function App() {
   const [isSignup, setIsSignup] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false); // Tracks API request status
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -36,7 +38,6 @@ function App() {
     setFormData({ username: "", email: "", password: "" });
     setError(null);
   };
-
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -51,33 +52,34 @@ function App() {
     event.preventDefault();
   };
 
-
   const handleSubmit = async (e) => {
-    e.preventDefault()
+  e.preventDefault();
+  setLoading(true); // Disable the button and show spinner
 
-const endpoint = isSignup
-  ? "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/signup"
-  : "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/signin";
+  const endpoint = isSignup
+    ? "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/signup"
+    : "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/user/signin";
 
+  const payload = { ...formData };
+  if (!isSignup) delete payload.username;
 
-    const payload = { ...formData };
-    if (!isSignup) delete payload.username;
+  try {
+    const res = await axios.post(endpoint, payload, {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-    try {
-      const res = await axios.post(endpoint, payload, {
-        withCredentials: true,  headers: {
-    'Content-Type': 'application/json' // ✅ Required for AWS Lambda to parse req.body correctly
+    window.location.href = 'https://main.dunuolnoll92w.amplifyapp.com/';
+  } catch (err) {
+    const msg = err.response?.data?.msg || err.response?.data?.message || "Authentication failed.";
+    setError(msg);
+  } finally {
+    setLoading(false); // Re-enable button after request finishes
   }
-      });
+};
 
-      
-      window.location.href = 'https://main.dunuolnoll92w.amplifyapp.com/';
-    } catch (err) {
-      const msg = err.response?.data?.msg || err.response?.data?.message || "Authentication failed.";
-
-      setError(msg);
-    }
-  };
 
   return (
     <Container maxWidth="xs">
@@ -193,9 +195,16 @@ const endpoint = isSignup
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ mt: 3, mb: 2, height: 40 }}
+            disabled={loading}
           >
-            {isSignup ? "Sign Up" : "Sign In"}
+            {loading ? (
+              <CircularProgress size={24} sx={{ color: "white" }} />
+            ) : isSignup ? (
+              "Sign Up"
+            ) : (
+              "Sign In"
+            )}
           </Button>
 
           <Grid container justifyContent="center">
