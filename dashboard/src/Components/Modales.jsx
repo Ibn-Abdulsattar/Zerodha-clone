@@ -44,8 +44,8 @@ useEffect(() => {
       e.preventDefault();
       const formData = new FormData(e.target);
       const name = idRef;
-      const qty = formData.get("qty");
-      const price = formData.get("price");
+      const qty = Number(formData.get("qty"));
+      const price = Number(formData.get("price"));
 
       await axios.post("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/order/createOrder", {
         name,
@@ -93,6 +93,7 @@ useEffect(() => {
               type="number"
               required
               InputLabelProps={{ shrink: true }}
+              onChange={(e) => setPrice(Number(e.target.value))}
             />
           </Box>
           <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
