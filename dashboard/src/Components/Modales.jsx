@@ -69,6 +69,7 @@ const Modales = ({
 
       setModalType(null);
       setOpen(false);
+      setShowWatchlistActions?.(false);
       Swal.fire({
         title: "Success!",
         text: "Order created successfully.",
@@ -76,8 +77,10 @@ const Modales = ({
         timer: 3000,
         showConfirmButton: false,
       });
-      setShowWatchlistActions?.(false);
     } catch (err) {
+      setModalType(null);
+      setOpen(false);
+      setShowWatchlistActions?.(false);
       Swal.fire({
         title: "Error!",
         text: "Error submitting Order: " + err.message,

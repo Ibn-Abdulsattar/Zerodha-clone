@@ -58,6 +58,7 @@ const AddFund = () => {
         showConfirmButton: false,
       });
     } catch (err) {
+      handleClose();
       Swal.fire({
         title: "Error!",
         text: "Error submitting fund: " + err.message,
