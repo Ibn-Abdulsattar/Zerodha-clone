@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Modales = ({
   setModalType,
@@ -27,17 +28,20 @@ const Modales = ({
 
   const [price, setPrice] = useState(0);
 
-useEffect(() => {
-  const cleanSymbol = idRef.endsWith(".NS") ? idRef : `${idRef}.NS`;
-  axios
-    .get(`https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/${cleanSymbol}`, {withCredentials: true})
-    .then((res) => {
-      setPrice(res.data.price);
-    })
-    .catch((err) => {
-      console.error("Price fetch failed:", err.response?.data || err.message);
-    });
-}, [idRef]);
+  useEffect(() => {
+    const cleanSymbol = idRef.endsWith(".NS") ? idRef : `${idRef}.NS`;
+    axios
+      .get(
+        `https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/api/price/${cleanSymbol}`,
+        { withCredentials: true }
+      )
+      .then((res) => {
+        setPrice(res.data.price);
+      })
+      .catch((err) => {
+        console.error("Price fetch failed:", err.response?.data || err.message);
+      });
+  }, [idRef]);
 
   const handleSubmit = async (e) => {
     try {
@@ -47,24 +51,39 @@ useEffect(() => {
       const qty = Number(formData.get("qty"));
       const price = Number(formData.get("price"));
 
-      await axios.post("https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/order/createOrder", {
-        name,
-        qty,
-        price,
-        mode,
-      },  {
+      await axios.post(
+        "https://ofe1qf8tyd.execute-api.ap-south-1.amazonaws.com/order/createOrder",
+        {
+          name,
+          qty,
+          price,
+          mode,
+        },
+        {
           headers: {
             "Content-Type": "application/json",
           },
           withCredentials: true,
-        });
+        }
+      );
 
       setModalType(null);
       setOpen(false);
-
+      Swal.fire({
+        title: "Success!",
+        text: "Order created successfully.",
+        icon: "success",
+        timer: 3000,
+        showConfirmButton: false,
+      });
       setShowWatchlistActions?.(false);
     } catch (err) {
-      alert(err);
+      Swal.fire({
+        title: "Error!",
+        text: "Error submitting Order: " + err.message,
+        icon: "error", // ❌ shows a red error icon
+        confirmButtonText: "OK",
+      });
     }
   };
 

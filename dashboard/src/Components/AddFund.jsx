@@ -13,6 +13,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddFund = () => {
   const [open, setOpen] = useState(false);
@@ -49,8 +50,20 @@ const AddFund = () => {
         }
       );
       handleClose();
+      Swal.fire({
+        title: "Success!",
+        text: "Fund added successfully.",
+        icon: "success",
+        timer: 2000,
+        showConfirmButton: false,
+      });
     } catch (err) {
-      alert("Error submitting fund: " + err.message);
+      Swal.fire({
+        title: "Error!",
+        text: "Error submitting fund: " + err.message,
+        icon: "error", // ❌ shows a red error icon
+        confirmButtonText: "OK",
+      });
     }
   };
 
