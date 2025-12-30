@@ -2,7 +2,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { Container, Divider, Grid } from "@mui/material";
+import { Container } from "@mui/material";
+import {Grid} from "@mui/material"; // Using modern Grid2
 
 export default function LeftCorner({
   img,
@@ -16,30 +17,51 @@ export default function LeftCorner({
   stack
 }) {
   return (
-    <Box sx={{ width: {md:"98.8vw", xs: "98.8vw"} }}>
-      <Container>
-        <Grid container sx={{ margin: "5rem 0" }} columnSpacing={21}>
-          <Grid sx={{ textAlign: "center" }} size={{ md: 7, xs: 12 }}>
-            <Link href={link} target='_blank'>
-            <Box
-              component="img"
-              src={img}
-              alt="Illustration"
-              sx={{
-                width: { xs: "80%", sm: "60%", md: "100%" },
-                maxWidth: "500px",
-                mx: "auto",
-              }}
-            />
+    <Box 
+      component="section" 
+      sx={{ 
+        width: "100%", 
+        overflowX: "hidden",
+        py: { xs: 3, md: 6 } 
+      }}
+    >
+      <Container maxWidth="xxl">
+        <Grid 
+          container 
+          spacing={{ xs: 4, md: 8, lg: 12 }} 
+          alignItems="center"
+          sx={{ mb: stack ? 4 : 0 }}
+        >
+          {/* Image Column */}
+          <Grid size={{ xs: 12, md: 7 }}>
+            <Link href={link} target='_blank' rel="noopener">
+              <Box
+                component="img"
+                src={img}
+                alt={title}
+                sx={{
+                  width: "100%",
+                  height: "auto",
+                  maxWidth: { xs: "400px", md: "550px" },
+                  display: "block",
+                  mx: "auto", // Centers on mobile
+                  transition: "transform 0.3s ease-in-out",
+                  "&:hover": { transform: "scale(1.02)" }
+                }}
+              />
             </Link>
           </Grid>
 
-          <Grid sx={{ marginTop: "3.5rem" }} size={{ md: 5, xs: 12 }}>
+          {/* Content Column */}
+          <Grid size={{ xs: 12, md: 5 }}>
              <Typography
+              variant="h2"
               sx={{
                 fontSize: { xs: "1.8rem", md: "2.2rem" },
                 fontWeight: 600,
+                lineHeight: 1.3,
                 mb: 2,
+                textAlign: { xs: "center", md: "left" }
               }}
             >
               {title}
@@ -48,9 +70,10 @@ export default function LeftCorner({
             <Typography
               sx={{
                 fontSize: { xs: "1rem", md: "1.1rem" },
-                lineHeight: "2rem",
+                lineHeight: 1.7,
                 color: "text.secondary",
-                mb: 3,
+                mb: 4,
+                textAlign: { xs: "center", md: "left" }
               }}
             >
               {description}
@@ -60,9 +83,9 @@ export default function LeftCorner({
             <Box
               sx={{
                 display: "flex",
-                flexDirection: { xs: "column", sm: "row" },
-                alignItems: { xs: "flex-start", sm: "center" },
-                gap: 3,
+                flexWrap: "wrap",
+                justifyContent: { xs: "center", md: "flex-start" },
+                gap: { xs: 2, sm: 4 },
                 mb: 4,
               }}
             >
@@ -70,32 +93,34 @@ export default function LeftCorner({
                 <Link
                   href={`${import.meta.env.VITE_Dashboard_Url}`}
                   target='_blank'
+                  rel="noopener"
                   sx={{
                     textDecoration: "none",
-                    fontSize: "1.2rem",
+                    fontSize: "1.1rem",
                     display: "flex",
                     alignItems: "center",
                     gap: 0.5,
                     fontWeight: 500,
                   }}
                 >
-                  {Try} <ArrowRightAltIcon fontSize="small" />
+                  {Try} <ArrowRightAltIcon />
                 </Link>
               )}
               {learn && (
                 <Link
-                target='_blank'
                   href={link}
+                  target='_blank'
+                  rel="noopener"
                   sx={{
                     textDecoration: "none",
-                    fontSize: "1.2rem",
+                    fontSize: "1.1rem",
                     display: "flex",
                     alignItems: "center",
                     gap: 0.5,
                     fontWeight: 500,
                   }}
                 >
-                  {learn} <ArrowRightAltIcon fontSize="small" />
+                  {learn} <ArrowRightAltIcon />
                 </Link>
               )}
             </Box>
@@ -105,24 +130,49 @@ export default function LeftCorner({
               sx={{
                 display: "flex",
                 gap: 2,
+                justifyContent: { xs: "center", md: "flex-start" },
                 flexWrap: "wrap",
-                mb: { xs: 4, md: 0 },
               }}
             >
               {google && (
-                <Link href="https://play.google.com/store/apps?hl=en" target='_blank' sx={{ display: "inline-block" }}>
-                  <Box component="img" src={google} width={150} alt="Google Play" />
+                <Link href="https://play.google.com/store/apps" target='_blank' rel="noopener">
+                  <Box 
+                    component="img" 
+                    src={google} 
+                    sx={{ width: { xs: 130, sm: 150 }, height: "auto" }} 
+                    alt="Get it on Google Play" 
+                  />
                 </Link>
               )}
               {app && (
-                <Link href="https://www.apple.com/app-store/" target='_blank' sx={{ display: "inline-block" }}>
-                  <Box component="img" src={app} width={140} alt="App Store" />
+                <Link href="https://www.apple.com/app-store/" target='_blank' rel="noopener">
+                  <Box 
+                    component="img" 
+                    src={app} 
+                    sx={{ width: { xs: 120, sm: 140 }, height: "auto" }} 
+                    alt="Download on the App Store" 
+                  />
                 </Link>
               )}
             </Box>
           </Grid>
         </Grid>
-        {stack && <Typography sx={{fontSize: "1.4rem", textAlign: "center",mb:"6rem"}}>{stack}</Typography>}
+
+        {/* Stack / Footer Note */}
+        {stack && (
+          <Typography 
+            sx={{
+              fontSize: { xs: "1.1rem", md: "1.4rem" }, 
+              textAlign: "center",
+              mt: { xs: 6, md: 10 },
+              mb: { xs: 4, md: 6 },
+              color: "text.primary",
+              fontWeight: 400
+            }}
+          >
+            {stack}
+          </Typography>
+        )}
       </Container>
     </Box>
   );

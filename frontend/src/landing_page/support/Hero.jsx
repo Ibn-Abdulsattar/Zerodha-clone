@@ -1,7 +1,6 @@
 import {
   Box,
   Container,
-  Grid,
   Typography,
   Link,
   TextField,
@@ -10,91 +9,96 @@ import {
   ListItemText,
   List,
 } from "@mui/material";
+import {Grid} from "@mui/material"; // Use Grid2 for modern standards
 import { useState } from "react";
+import SearchIcon from "@mui/icons-material/Search"; // Native MUI icon for stability
 
 export default function Hero() {
   const [inputValue, setInputValue] = useState("");
+
   return (
     <Box
+      component="section"
       sx={{
         background: "#387ed1",
         color: "white",
-        width: { xs: "98.8vw", md: "98.8vw" },
+        // width: "100%", // Fixed from 98.8vw
+        overflowX: "hidden",
+        pt: { xs: 4, md:14 },
+        pb: { xs: 6, md: 14 },
       }}
     >
-      <Container
-        sx={{
-          px: { xs: "1.5rem", sm: "3rem", md: "7rem" },
-          py: { xs: "3rem", md: "4.5rem" },
-          mt: "3rem",
-        }}
-      >
+      <Container maxWidth="lg">
         {/* Header Row */}
         <Box
           sx={{
             display: "flex",
-            flexDirection: { xs: "column", sm: "row" },
+            flexDirection: { xs: "row" }, // Keep horizontal for clean branding
             justifyContent: "space-between",
-            alignItems: { xs: "flex-start", sm: "center" },
-            mb: "2.5rem",
-            gap: "0.8rem",
+            alignItems: "center",
+            mb: { xs: 4, md: 6 },
           }}
         >
-          <Typography sx={{ fontSize: { xs: "1.2rem", md: "1.4rem" } }}>
+          <Typography 
+            variant="h6" 
+            sx={{ 
+                fontWeight: 600, 
+                fontSize: { xs: "1.1rem", md: "1.4rem" } 
+            }}
+          >
             Support Portal
           </Typography>
-          <Typography>
-            <Link
-              href="https://www.freshworks.com/"
-              sx={{
-                color: "#fff",
-                borderBottom: "1px solid #fff",
-                pb: "0.2rem",
-                fontSize: { xs: "1rem", md: "1.1rem" },
-                textDecoration: "none",
-              }}
-            >
-              Track tickets
-            </Link>
-          </Typography>
+          <Link
+            href="#"
+            sx={{
+              color: "#fff",
+              borderBottom: "1px solid #fff",
+              fontSize: { xs: "0.9rem", md: "1.1rem" },
+              textDecoration: "none",
+              "&:hover": { opacity: 0.8 }
+            }}
+          >
+            Track tickets
+          </Link>
         </Box>
 
-        <Grid container spacing={4} sx={{ mb: "1rem" }}>
-          {/* Left Side */}
-          <Grid item size={{ xs: 12, md: 7 }}>
+        <Grid container spacing={{ xs: 6, md: 10 }}>
+          {/* Left Side: Search & Quick Links */}
+          <Grid size={{ xs: 12, md: 7 }}>
             <Typography
-              sx={{ fontSize: { xs: "1.2rem", md: "1.4rem" }, mb: "1.5rem" }}
+              variant="h5"
+              sx={{ 
+                fontSize: { xs: "1.2rem", md: "1.5rem" }, 
+                mb: 3,
+                lineHeight: 1.4 
+              }}
             >
               Search for an answer or browse help topics to create a ticket
             </Typography>
 
             <TextField
+              fullWidth
               placeholder="Eg: how do I activate F&O, why is my order getting rejected ..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
+              variant="outlined"
               sx={{
                 backgroundColor: "#fff",
-                width: "100%",
-                borderRadius: "3px",
-                mb: "1.5rem",
+                borderRadius: "4px",
+                mb: 3,
+                "& .MuiOutlinedInput-root": {
+                   height: { xs: "55px", md: "65px" }
+                }
               }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    {inputValue.trim() ? (
-                      <Link href="https://www.freshworks.com/" underline="none">
-                        <i className="fa-regular fa-magnifying-glass" />
-                      </Link>
-                    ) : (
-                      <i
-                        className="fa-regular fa-magnifying-glass"
-                        style={{
-                          color: "gray",
-                          cursor: "not-allowed",
-                          pointerEvents: "none",
-                        }}
-                      />
-                    )}
+                    <SearchIcon 
+                        sx={{ 
+                            color: inputValue.trim() ? "#387ed1" : "gray",
+                            cursor: inputValue.trim() ? "pointer" : "default"
+                        }} 
+                    />
                   </InputAdornment>
                 ),
               }}
@@ -105,8 +109,7 @@ export default function Hero() {
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
-                gap: "1rem",
-                mb: "1rem",
+                gap: { xs: 2, md: 3 },
               }}
             >
               {[
@@ -117,13 +120,13 @@ export default function Hero() {
               ].map((label, idx) => (
                 <Link
                   key={idx}
+                  href="#"
                   sx={{
                     color: "#fff",
-                    borderBottom: "1px solid #fff",
-                    pb: "0.2rem",
-                    fontSize: "1.1rem",
+                    borderBottom: "1px solid rgba(255,255,255,0.6)",
+                    fontSize: { xs: "0.9rem", md: "1.05rem" },
                     textDecoration: "none",
-                    whiteSpace: "nowrap",
+                    "&:hover": { borderBottomColor: "#fff" }
                   }}
                 >
                   {label}
@@ -132,21 +135,44 @@ export default function Hero() {
             </Box>
           </Grid>
 
-          {/* Right Side */}
+          {/* Right Side: Featured */}
           <Grid size={{ xs: 12, md: 5 }}>
             <Typography
-              sx={{ fontSize: { xs: "1.2rem", md: "1.4rem" }, mb: "1rem" }}
+              variant="h6"
+              sx={{ 
+                fontSize: { xs: "1.2rem", md: "1.4rem" }, 
+                mb: 2,
+                fontWeight: 600 
+              }}
             >
               Featured
             </Typography>
-            <List sx={{ listStyleType: "decimal", pl: "1.2rem" }}>
+            <List 
+                component="ol" 
+                sx={{ 
+                    listStyleType: "decimal", 
+                    pl: 3,
+                    "& .MuiListItem-root": {
+                        display: "list-item",
+                        px: 0,
+                        py: 1
+                    }
+                }}
+            >
               {[
-                "Surveillance measure on scrips - June 2025",
-                "Latest Intraday leverages and Square-off timings",
+                "Surveillance measure on scrips - December 2025",
+                "Latest Intraday leverages and Square-off timings for 2025",
               ].map((text, idx) => (
-                <ListItem sx={{ display: "list-item", pl: 0 }} key={idx}>
+                <ListItem key={idx}>
                   <ListItemText>
-                    <Link sx={{ textDecoration: "none", color: "#fff" }}>
+                    <Link 
+                        href="#"
+                        sx={{ 
+                            textDecoration: "underline", 
+                            color: "#fff",
+                            fontSize: { xs: "0.95rem", md: "1.1rem" }
+                        }}
+                    >
                       {text}
                     </Link>
                   </ListItemText>

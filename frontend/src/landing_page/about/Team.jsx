@@ -72,54 +72,61 @@ export default function Team() {
   ];
 
   return (
-    <Box sx={{ width: { md: "98.8vw", xs: "98.8vw" }, py: { xs: 5, md: 10 } }}>
+    <Box 
+      component="section" 
+      sx={{ 
+        width: "100%", // Fixed from 98.8vw to prevent horizontal scroll
+        py: { xs: 6, md: 12 }, 
+        overflowX: "hidden" 
+      }}
+    >
       <Container maxWidth="lg">
+        {/* === Header Section === */}
+        <Typography
+          variant="h4"
+          align="center"
+          sx={{
+            mb: { xs: 6, md: 10 },
+            fontWeight: 700,
+            fontSize: { xs: "1.8rem", md: "2.5rem" },
+          }}
+        >
+          People
+        </Typography>
+
         {/* === Nithin Kamath Section === */}
         <Grid
           container
-          spacing={{ xs: 4, md: 6 }}
-          alignItems="center"
-          sx={{ mb: { xs: 6, md: 10 } }}
+          spacing={{ xs: 4, md: 8 }}
+          alignItems="flex-start"
+          sx={{ mb: { xs: 10, md: 15 } }}
         >
-          <Grid item xs={12} md={5} sx={{ textAlign: "center" }}>
-            <Box>
-              <Box
-                component="img"
-                src={nithinKamath}
-                alt="Nithin Kamath"
-                sx={{
-                  width: { xs: "180px", sm: "220px", md: "260px" },
-                  height: "auto",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                }}
-              />
-              <Typography variant="h6" sx={{ mt: 2, fontWeight: 600 }}>
-                Nithin Kamath
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Founder, CEO
-              </Typography>
-            </Box>
+          <Grid size={{ xs: 12, md: 5 }} sx={{ textAlign: "center" }}>
+            <Box
+              component="img"
+              src={nithinKamath}
+              alt="Nithin Kamath"
+              sx={{
+                width: { xs: "200px", md: "300px" },
+                aspectRatio: "1/1",
+                borderRadius: "50%",
+                objectFit: "cover",
+                mb: 2,
+              }}
+            />
+            <Typography variant="h5" sx={{ fontWeight: 600 }}>
+              Nithin Kamath
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              Founder, CEO
+            </Typography>
           </Grid>
 
-          <Grid item xs={12} md={7}>
-            <Typography
-              variant="h4"
-              sx={{
-                mb: 3,
-                fontSize: { xs: "1.6rem", md: "2rem" },
-                fontWeight: 700,
-              }}
-            >
-              People
-            </Typography>
-
+          <Grid size={{ xs: 12, md: 7 }}>
             {[
               `Nithin bootstrapped and founded Zerodha in 2010 to overcome the hurdles he faced during his decade-long stint as a trader. Today, Zerodha has changed the landscape of the Indian broking industry.`,
               `He is a member of SEBI's Secondary Market Advisory Committee (SMAC) and the Market Data Advisory Committee (MDAC).`,
               `Playing basketball is his zen.`,
-              `Connect on `,
             ].map((text, i) => (
               <Typography
                 key={i}
@@ -130,26 +137,15 @@ export default function Team() {
                   mb: 2,
                 }}
               >
-                {text.includes("Connect") ? (
-                  <>
-                    Connect on{" "}
-                    <Link href="/" underline="hover">
-                      Homepage
-                    </Link>{" "}
-                    /{" "}
-                    <Link href={import.meta.env.VITE_Backend_Url} underline="hover">
-                      TradingQnA
-                    </Link>{" "}
-                    /{" "}
-                    <Link href="https://yourstory.com/people/nithin-kamath" underline="hover">
-                      Twitter
-                    </Link>
-                  </>
-                ) : (
-                  text
-                )}
+                {text}
               </Typography>
             ))}
+            <Typography sx={{ fontSize: "1.1rem", mt: 2 }}>
+              Connect on{" "}
+              <Link href="#" underline="hover">Homepage</Link> /{" "}
+              <Link href="#" underline="hover">TradingQnA</Link> /{" "}
+              <Link href="#" underline="hover">Twitter</Link>
+            </Typography>
           </Grid>
         </Grid>
 
@@ -157,7 +153,6 @@ export default function Team() {
         <Grid container spacing={{ xs: 4, md: 6 }}>
           {team.map((member, idx) => (
             <Grid
-              item
               key={idx}
               size={{ xs: 12, sm: 6, md: 4 }}
               sx={{
@@ -171,59 +166,54 @@ export default function Team() {
                 src={member.img}
                 alt={member.name}
                 sx={{
-                  width: "160px",
-                  height: "160px",
+                  width: "180px",
+                  height: "180px",
                   borderRadius: "50%",
                   objectFit: "cover",
                   mb: 2,
+                  transition: "transform 0.3s ease",
+                  "&:hover": { transform: "scale(1.05)" }
                 }}
               />
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: 600, textAlign: "center" }}
-              >
+              <Typography variant="h6" sx={{ fontWeight: 600 }}>
                 {member.name}
               </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ mb: 1, textAlign: "center" }}
-              >
+              <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
                 {member.category}
               </Typography>
 
+              {/* Improved Accordion for Bio */}
               <Accordion
                 elevation={0}
+                disableGutters
                 sx={{
                   width: "100%",
-                  maxWidth: "300px",
-                  mt: 1,
+                  backgroundColor: "transparent",
+                  "&:before": { display: "none" }, // Remove default divider
                 }}
               >
-                <Box sx={{ display: "flex", justifyContent: "center" }}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel2-content"
-                    id="panel2-header"
-                    sx={{
-                      width: "20px",
-                    }}
-                  >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  sx={{
+                    justifyContent: "center",
+                    flexDirection: "row-reverse",
+                    "& .MuiAccordionSummary-content": {
+                      flexGrow: 0,
+                      ml: 1,
+                    },
+                  }}
+                >
+                  <Typography variant="body2" sx={{ fontWeight: 500 }}>
                     Bio
-                  </AccordionSummary>
-                </Box>
-                <AccordionDetails>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails sx={{ px: 1, pb: 2 }}>
                   <Typography
                     variant="body2"
                     sx={{
                       color: "text.secondary",
-                      fontSize: "0.95rem",
-                      textAlign: "left",
+                      textAlign: "center",
                       lineHeight: 1.6,
-                      backgroundColor: "#fff",
-                      border: "1px solid #eee",
-                      borderRadius: "8px",
-                      padding: "1rem",
                     }}
                   >
                     {member.description}

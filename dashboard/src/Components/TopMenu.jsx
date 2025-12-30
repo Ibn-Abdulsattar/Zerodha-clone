@@ -56,7 +56,7 @@ const TopMenu = () => {
   };
 
   return (
-    <>
+    <Box className="topmenu">
       {isWide ? (
         <Box
           sx={{
@@ -192,7 +192,7 @@ const TopMenu = () => {
         {/* <MenuItem>👤 My Profile</MenuItem> */}
         <MenuItem>🔓 Logout</MenuItem>
       </MuiMenu>
-    </>
+    </Box>
   );
 };
 

@@ -37,7 +37,9 @@ const WatchList = () => {
 
   return (
     <div className="watchlist-container">
-      <div className="search-container">
+      
+      <div  className="search-container">
+
         <input
           type="text"
           name="search"
@@ -45,7 +47,7 @@ const WatchList = () => {
           onChange={(e) => {
             setSearch(e.target.value);
           }}
-          placeholder="Search eg:infy, bse, nifty fut weekly, gold mcx"
+          placeholder="Search eg:infy, bse, nifty"
           className="search"
         />
         <span className="counts"> {watchlist.length} / 50</span>
@@ -57,7 +59,6 @@ const WatchList = () => {
             stock.name.toLowerCase().includes(search.toLowerCase())
           )
           .map((stock) => (
-            
             <WatchListItem stock={stock} key={stock.name} />
           ))}
       </ul>

@@ -10,17 +10,18 @@ import { Button, Container, Link } from "@mui/material";
 export default function InvestOption() {
   return (
     <>
-      <Container sx={{ marginBottom: "3rem" }}>
-        <Grid container spacing={6}>
+      <Container sx={{ marginBottom: "2rem" }}>
+        <Grid
+          container
+          rowSpacing={{ xs: 3, md: 6 }}
+          columnSpacing={{ xs: 2, sm: 4, md: 6 }}
+        >
           <Grid size={{ xs: 12 }}>
             <Typography
               sx={{
                 textAlign: "center",
-                fontSize: {
-                  xs: "1.4rem", // for mobile
-                  sm: "1.8rem", // small tablets
-                  md: "2.2rem", // desktops and above
-                },
+                fontWeight: "600",
+                fontSize: { xs: "1.6rem", sm: "2rem", md: "2.4rem" },
               }}
               variant="h4"
             >
@@ -59,21 +60,23 @@ export default function InvestOption() {
             ></InvestCard>
           </Grid>
           <Grid item size={{ xs: 12 }} textAlign={"center"}>
-            <Link href={`${import.meta.env.VITE_Dashboard_Url}/orders`} target='_blank'>
-            <Button
-            variant="contained"
-            sx={{
-              fontSize: "1.2rem",
-              px: "2rem",
-              py: "0.6rem",
-              fontWeight: "bold",
-              textTransform: "none",
-            }}
-          >
-            Explore Investments
-          </Button>
-          </Link>
-
+            <Link
+              href={`${import.meta.env.VITE_Dashboard_Url}/orders`}
+              target="_blank"
+            >
+              <Button
+                variant="contained"
+                sx={{
+                  fontSize: "1.2rem",
+                  px: "2rem",
+                  py: "0.6rem",
+                  fontWeight: "bold",
+                  textTransform: "none",
+                }}
+              >
+                Explore Investments
+              </Button>
+            </Link>
           </Grid>
         </Grid>
       </Container>

@@ -29,7 +29,7 @@ const TopBar = () => {
 
   return (
     <div className="topbar-container">
-      <div className="indices-container">
+      <div  className="indices-container">
         <div className="nifty">
           <p className="index">NIFTY 50</p>
           <p className="index-points">{nifty ? nifty.toFixed(1) : "—"} </p>

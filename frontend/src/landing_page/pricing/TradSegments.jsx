@@ -120,7 +120,7 @@ export default function TradSegments() {
   const { columns, rows } = tabData[active];
 
   return (
-    <Box sx={{ width: "98.8vw", mb: "2rem", mt: "5rem" }}>
+    <Box sx={{ mb: "2rem", mt: {xs:"3rem", md:"4rem" }}}>
       <Container>
         <TabContext value={active}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>

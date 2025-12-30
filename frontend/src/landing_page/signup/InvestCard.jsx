@@ -8,7 +8,7 @@ export default function InvestCard({ icon, title, subtitle }) {
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         alignItems: { xs: "center", sm: "flex-start" },
-        gap: { xs: 2, sm: 3 },
+        gap: { xs: 0, sm: 3 },
         width: "100%",
         px: { xs: 1, md: 2 },
       }}
@@ -36,7 +36,7 @@ export default function InvestCard({ icon, title, subtitle }) {
           sx={{
             fontSize: { xs: "1.2rem", sm: "1.4rem", md: "1.6rem" },
             // fontWeight: 600,
-            mb: 0.5,
+            mb: 0.3,
             textAlign: { xs: "center", sm: "left" },
           }}
         >

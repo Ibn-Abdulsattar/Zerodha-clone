@@ -12,7 +12,7 @@ import {
 
 export default function OptionalFee() {
   return (
-    <Box sx={{ width: "98.8vw", mt: 8, mb: 10}}>
+    <Box sx={{ mt: 4, mb: 10}}>
       <Container>
         <Grid container>
             <Typography sx={{mb: "1.5rem", fontSize: "1.5rem"}}>Charges for optional value added services</Typography>

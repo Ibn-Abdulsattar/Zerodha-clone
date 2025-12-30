@@ -4,6 +4,7 @@ import Trust from './Trust';
 import Pricing from './Pricing';
 import Education from './Education';
 import OpenAccount from '../OpenAccount';
+import { Box } from '@mui/material';
 
 export default function HomePage (){
     return (

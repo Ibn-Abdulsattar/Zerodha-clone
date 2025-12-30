@@ -42,8 +42,11 @@ const Dashboard = () => {
     <>
       <div className="username">
         <h6>
-          Hi, <i style={{ color: "#4B0082" }}>{user?.username || "User"}</i> !
-        </h6>
+  Hello <i style={{ color: "#4B0082" }}>{user?.username || "User"}</i>,  
+  <br />
+  Welcome to <strong>Zerodha</strong> — we’re glad to have you with us.
+</h6>
+
         <hr className="divider" />
       </div>
 

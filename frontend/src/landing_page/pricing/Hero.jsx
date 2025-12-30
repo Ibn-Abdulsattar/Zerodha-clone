@@ -1,4 +1,5 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
+import {Grid} from "@mui/material"; // Use Grid2 for modern v5/v6 standards
 import intradayTrades from "../../assets/image/intradayTrades.svg";
 import pricingEquity from "../../assets/image/pricingEquity.svg";
 
@@ -25,30 +26,41 @@ export default function Hero() {
   ];
 
   return (
-    <Box sx={{ width: {xs: "98.8vw",md: "98.8vw"}, py: { xs: 6, md: 10 } }}>
-      <Container>
+    <Box 
+      component="section" 
+      sx={{ 
+        width: "100%", // Fixed: 98.8vw creates horizontal scrollbars on Windows
+        overflowX: "hidden",
+        py: { xs: 10, md: 12 }, 
+        pb:{xs:0, md:0}
+      }}
+    >
+      <Container maxWidth="xxl">
         {/* Header Section */}
         <Box
           sx={{
             textAlign: "center",
-            mb: { xs: 10, md: 16 },
-            mt: "4rem"
+            mb: { xs: 4, md: 12 },
           }}
         >
           <Typography
-            variant="h3"
+            variant="h1" // SEO best practice
             sx={{
               fontSize: { xs: "2.2rem", sm: "2.8rem", md: "3.2rem" },
-              fontWeight: 700,
+              fontWeight: 600,
+              mb: 1.5
             }}
           >
             Charges
           </Typography>
           <Typography
+            variant="h2"
             sx={{
-              mt: 2,
-              fontSize: { xs: "1rem", md: "1.2rem" },
-              opacity: 0.6,
+              fontSize: { xs: "1.1rem", md: "1.25rem" },
+              color: "text.secondary",
+              fontWeight: 400,
+              maxWidth: "600px",
+              mx: "auto"
             }}
           >
             List of all charges and taxes
@@ -56,12 +68,11 @@ export default function Hero() {
         </Box>
 
         {/* Cards Section */}
-        <Grid container spacing={{ xs: 6, md: 10 }}>
+        <Grid container spacing={{ xs: 4, md: 6 }}>
           {trades.map((trade, idx) => (
             <Grid
-              item
               key={idx}
-              size={{xs: 12, md:4}}
+              size={{ xs: 12, md: 4 }}
               sx={{ textAlign: "center" }}
             >
               <Box
@@ -69,27 +80,30 @@ export default function Hero() {
                 src={trade.img}
                 alt={trade.title}
                 sx={{
-                  width: { xs: "70%", sm: "60%", md: "100%" },
-                  maxWidth: "300px",
+                  width: "100%",
+                  maxWidth: { xs: "180px", sm: "220px", md: "100%" },
+                  height: "auto",
                   mx: "auto",
+                  mb: 0
                 }}
               />
               <Typography
+                variant="h3"
                 sx={{
-                  fontSize: { xs: "1.4rem", md: "1.8rem" },
+                  fontSize: { xs: "1.3rem", lg: "1.6rem", md:"1.4" },
                   fontWeight: 600,
-                  mt: 3,
                   mb: 2,
                 }}
               >
                 {trade.title}
               </Typography>
               <Typography
+                variant="body1"
                 sx={{
-                  fontSize: { xs: "1rem", md: "1.1rem" },
-                  lineHeight: 1.7,
-                  opacity: 0.7,
-                  px: { xs: 2, sm: 4 },
+                  fontSize: { xs: "0.95rem", md: "1.05rem" },
+                  lineHeight: 1.6,
+                  color: "text.secondary",
+                  px: { xs: 1, sm: 3, md: 0 },
                 }}
               >
                 {trade.discrp}

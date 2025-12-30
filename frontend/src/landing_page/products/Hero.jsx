@@ -6,10 +6,11 @@ import { Container, Divider } from "@mui/material";
 
 export default function Hero() {
   return (
-    <Box sx={{ width: "98.8vw" }}>
+    <Box >
       <Container>
-        <Box sx={{ textAlign: "center", margin: "6.5rem 0" }}>
+        <Box sx={{ textAlign: "center", marginTop: "6.5rem" }}>
           <Typography
+          fontWeight={600}
             sx={{ fontSize: { xs: "2rem", sm: "2.6rem", md: "3.4rem" } }}
             variant="h3"
           >
@@ -27,6 +28,7 @@ export default function Hero() {
             sx={{
               fontSize: { xs: "1rem", md: "1.1rem" },
               color: "text.secondary",
+              mb:"1rem"
             }}
           >
             Check out our{" "}
@@ -44,8 +46,8 @@ export default function Hero() {
               investment offerings <ArrowRightAltIcon fontSize="small" />
             </Link>
           </Typography>
-        </Box>
         <Divider sx={{ background: "#ddd" }} />
+        </Box>
       </Container>
     </Box>
   );

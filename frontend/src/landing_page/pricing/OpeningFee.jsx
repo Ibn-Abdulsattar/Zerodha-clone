@@ -13,7 +13,7 @@ import {
 
 export default function OpeningFee() {
   return (
-    <Box sx={{ width: "98.8vw", backgroundColor: "#fff", py: 4, mt: "4rem" }}>
+    <Box sx={{ backgroundColor: "#fff", py: 4, mt: "0rem" }}>
       <Container>
         <Typography sx={{ fontSize: "1.5rem", fontWeight: 500, mb: 2 }}>
           Charges for account opening

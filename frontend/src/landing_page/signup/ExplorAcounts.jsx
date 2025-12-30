@@ -40,16 +40,22 @@ export default function ExploreAcounts() {
   return (
     <Box
       sx={{
-        width: { xs: "98.8vw", md: "98.8vw" },
         py: { xs: "2rem", md: "4rem" },
+        px: {xs:"1rem", md: "1.5rem"},
         background: "#fafafa",
       }}
     >
-      <Container sx={{ padding: "2rem" }}>
+      <Container >
         <Typography
           sx={{
             textAlign: "center",
-            fontSize: { xs: "1.8rem", md: "2.4rem" },
+            fontWeight: 600,
+            fontSize: {
+                    xs: "1.4rem",
+                    sm: "1.8rem",
+                    md: "2rem",
+                    lg: "2.4rem",
+                  },
             // fontWeight: 600,
             mb: { xs: "2rem", md: "3rem" },
           }}

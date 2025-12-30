@@ -1,97 +1,106 @@
-import React, { useState } from "react"; // ← Add useState
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import React, { useState } from "react";
+import {
+  Box,
+  Typography,
+  TextField,
+  InputAdornment,
+  Button,
+  Link,
+  Grid,
+  Container,
+  Stack,
+} from "@mui/material";
 import signupHero from "../../assets/image/SignupHero.png";
-import { TextField, InputAdornment, Button, Link } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import { Container } from "@mui/material";
 
 export default function Hero() {
   const [mobile, setMobile] = useState("");
-
   const isValidMobile = mobile.length >= 10 && mobile.length <= 11;
 
   return (
-    <Container sx={{ padding: "5rem 2rem", width: "98.8vw" }}>
-      <Grid
-        item
-        size={{ xs: 12 }}
-        sx={{ marginBottom: "6rem", textAlign: "center" }}
-      >
+    <Container
+      maxWidth="xxl"
+      sx={{
+        py: { xs: 6, md: 10 },
+        px: { xs: 2, sm: 4 },
+        mt:5
+      }}
+    >
+      {/* Header Section */}
+      <Box sx={{display: "flex", justifyContent: "center"}}>
+      <Box textAlign="center" sx={{width: "95%"}} mb={{ xs: 6, md: 8 }}>
         <Typography
-          sx={{
-            lineHeight: "1.4",
-            fontSize: { xs: "2rem", sm: "2.4rem", md: "3rem" },
-          }}
           variant="h3"
+          sx={{
+            fontSize: { xs: "2rem", sm: "2.4rem", md: "3rem" },
+            lineHeight: 1.3,
+            fontWeight: 600,
+          }}
         >
           Open a free demat and trading account online
         </Typography>
         <Typography
           variant="h6"
-          sx={{ fontSize: { xs: "1rem", md: "1.2rem" } }}
-        >
-          Start investing brokerage free and join a community of 1.6+ crore
-          investors and traders
-        </Typography>
-      </Grid>
-
-      <Grid container columnSpacing={12}>
-        <Grid
-          size={{ xs: 12, md: 7 }}
           sx={{
-            display: "flex",
-            justifyContent: { xs: "center", md: "end" },
-            alignItems: "center",
+            mt: 2,
+            fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+            color: "text.secondary",
           }}
         >
+          Start investing brokerage-free and join a community of 1.6+ crore
+          investors and traders.
+        </Typography>
+      </Box>
+      </Box>
+
+      {/* Main Grid */}
+      <Grid
+        container
+        spacing={{ xs: 4, md: 8 }}
+        alignItems="center"
+        justifyContent="center"
+      >
+        {/* Left: Image Section */}
+        <Grid size={{xs:12, md:7}}>
           <Box
             component="img"
             src={signupHero}
-            alt="signupHero"
+            alt="Sign up illustration"
             sx={{
-              width: { xs: "100%", sm: "80%", md: "100%" },
-              maxWidth: "600px",
+              width: "100%",
+              maxWidth: 600,
+              mx: "auto",
+              display: "block",
+              objectFit: "contain",
             }}
           />
         </Grid>
 
-        <Grid
-          size={{ xs: 12, md: 5 }}
-          sx={{
-            display: "flex",
-            justifyContent: { xs: "center", md: "end" },
-            alignItems: "center",
-          }}
-        >
-          <Box
+        {/* Right: Signup Form */}
+        <Grid size={{xs:12, md:5}}>
+          <Stack
+            spacing={2}
             sx={{
               width: "100%",
-              maxWidth: "400px",
-              mt: { md: 0, xs: "2rem" },
+              maxWidth: 400,
+              mx: { xs: "auto", md: 0 },
+              textAlign: { xs: "center", md: "left" },
             }}
           >
             <Typography
               variant="h4"
               sx={{
-                mb: 1,
-                textAlign: { md: "start", xs: "center" },
-                fontSize: {
-                  xs: "1.6rem",
-                  sm: "2rem",
-                  md: "2.4rem",
-                  lg: "2.6rem",
-                },
+                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.4rem" },
+                fontWeight: 600,
               }}
             >
               Sign up now
             </Typography>
+
             <Typography
               variant="body2"
               sx={{
                 color: "text.secondary",
-                mb: 3,
-                textAlign: { md: "start", xs: "center" },
+                mb: 2,
               }}
             >
               Or track your existing application
@@ -106,15 +115,20 @@ export default function Hero() {
                 const value = e.target.value.replace(/\D/g, "");
                 if (value.length <= 11) setMobile(value);
               }}
-              inputProps={{ maxLength: 11 }}
-              sx={{ mb: 3 }}
+              inputProps={{ maxLength: 11, "aria-label": "Mobile number" }}
+              sx={{ mb: 2 }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment
-                    sx={{ borderRight: "1px solid #ccc", pr: 1 }}
+                    sx={{
+                      borderRight: "1px solid #ccc",
+                      pr: 1.2,
+                      color: "text.secondary",
+                      fontSize: "0.9rem",
+                    }}
                     position="start"
                   >
-                    PKR +92
+                    +92
                   </InputAdornment>
                 ),
               }}
@@ -123,14 +137,19 @@ export default function Hero() {
             <Link
               href={`${import.meta.env.VITE_Frontend_Url}/authenticate`}
               target="_blank"
-              sx={{ textDecoration: "none" }}
+              underline="none"
             >
               <Button
                 fullWidth
-                sx={{ fontSize: "1.1rem", py: 1.2 }}
-                color="primary"
                 variant="contained"
-                disabled={!isValidMobile} // ← disable if invalid
+                color="primary"
+                disabled={!isValidMobile}
+                sx={{
+                  py: 1.4,
+                  fontSize: "1.05rem",
+                  textTransform: "none",
+                  borderRadius: 2,
+                }}
               >
                 Signup
               </Button>
@@ -138,11 +157,14 @@ export default function Hero() {
 
             <Typography
               variant="caption"
-              sx={{ mt: 3, display: "block", color: "text.secondary" }}
+              sx={{
+                color: "text.secondary",
+                mt: 2,
+              }}
             >
-              By proceeding, you agree to the Zerodha terms & privacy policy
+              By proceeding, you agree to the Zerodha terms & privacy policy.
             </Typography>
-          </Box>
+          </Stack>
         </Grid>
       </Grid>
     </Container>

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden !important;
 }
 
 code {
@@ -587,11 +588,13 @@ hr {
   flex-basis: 32%;
   height: 100%;
   padding: 10px 20px;
-  border-right: 1px solid rgb(224, 224, 224);
+  padding-top: 25px !important;
+  /* border-right: 1px solid rgb(224, 224, 224); */
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  overflow: hidden !important;
 }
 
 .nifty {
@@ -871,7 +874,7 @@ body {
 .watchlist-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  /* gap: 1px; */
 }
 
 /* === GRID ON LARGER SCREENS === */
@@ -887,8 +890,7 @@ body {
     overflow-y: auto;
   }
 
-  .watchlist-container,
-  .indices-container {
+  .watchlist-container {
     flex-basis: 32%;
     height: 100%;
     overflow-y: auto;
@@ -935,6 +937,12 @@ body {
 @media (min-width: 768px) {
   .watchlist-container {
     max-height: none;
+  }
+}
+
+@media (max-width: 815px){
+    .sensex{
+    display: none !important;
   }
 }
 
@@ -1041,13 +1049,15 @@ body {
   .watchlist-container {
     width: 100% !important;
     flex-basis: 100% !important;
-    padding: 2% 1rem !important;
+    /* padding: 2% 1rem !important; */
     box-sizing: border-box;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.05);
     margin-top: 20px;
+    overflow-x: hidden;
   }
+
 
   .dashboard-container {
     padding: 0 1rem;
@@ -1079,11 +1089,22 @@ body {
     flex-basis: auto !important;
     height: auto !important;   /* <-- THIS is the key fix */
     max-height: none !important;
-    padding: 2% 1rem !important;
+    /* padding: 2% 1rem !important; */
     box-sizing: border-box;
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.05);
-    margin-top: 20px;
   }
+
+  /* .topmenu{
+    width: 40%;
+  } */
 }
+  .list{
+    margin-left: 0px !important;
+    margin-bottom: 0px !important;
+    padding: 5px;
+  }
+
+  .chart-container{
+    padding-bottom: .5rem;
+  }

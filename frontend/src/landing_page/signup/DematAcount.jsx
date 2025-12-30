@@ -13,17 +13,22 @@ export default function DematAcount() {
     <Box
       sx={{
         background: "#fafafb",
-        width: {xs: "98.8vw", md: "98.8vw"},
         py: { xs: "3rem", md: "5rem" },
       }}
     >
       <Container>
         <Grid container spacing={4}>
           {/* Heading */}
-          <Grid item size={{ xs: 12 }}>
+          <Grid size={{ xs: 12 }}>
             <Typography
               variant="h4"
-              sx={{ margin: "3.5rem 0rem", textAlign: "center" }}
+              align="center"
+              sx={{
+                mb: { xs: 0, md: 0 },
+                fontSize: { xs: "1.6rem", sm: "2rem", md: "2.4rem" },
+                fontWeight: 600,
+                lineHeight: 1.3,
+              }}
             >
               Steps to open a demat account with Zerodha
             </Typography>
@@ -48,8 +53,7 @@ export default function DematAcount() {
 
           {/* Steps Column */}
           <Grid
-            item
-            size={{xs: 12, md:6}}
+            size={{ xs: 12, md: 6 }}
             sx={{
               mt: { xs: 0, md: "2rem" },
               textAlign: { xs: "center", md: "start" },

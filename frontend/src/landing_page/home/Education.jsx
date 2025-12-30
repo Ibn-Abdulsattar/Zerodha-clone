@@ -4,89 +4,154 @@ import education from "../../assets/image/education.svg";
 
 export default function Education() {
   return (
-    <Box
-      component="section"
+<Box
+  component="section"
+  sx={{
+
+    display: "flex",
+    flexDirection: { xs: "column", md: "row" },
+    alignItems: "center",
+    justifyContent: "center",
+    px: { xs: 2, sm: 4, md: 8 },
+    py: { xs: 2, sm: 4, md: 6 },
+    gap: { xs: 3, sm: 4, md: 6, lg: 8 },
+    overflowX: "hidden",
+    backgroundColor: "#fff",
+  }}
+>
+  {/* Left side: Image */}
+  <Box
+    sx={{
+      flex: 1,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      mb: { xs: 3, md: 0 },
+    }}
+  >
+    <Link
+      href={`${import.meta.env.VITE_Backend_Url}/funds`}
+      target="_blank"
+      rel="noopener"
+    >
+      <Box
+        component="img"
+        src={education}
+        alt="Education Visual"
+        sx={{
+          width: { xs: "85%", sm: "80%", md: "90%" },
+          maxWidth: "600px",
+          height: "auto",
+          borderRadius: 2,
+          objectFit: "cover"
+        }}
+      />
+    </Link>
+  </Box>
+
+  {/* Right side: Text */}
+  <Box
+    sx={{
+      flex: 1,
+      textAlign: { xs: "center", md: "left" },
+      px: { xs: 1, sm: 2 },
+    }}
+  >
+    {/* Heading */}
+    <Typography
+      variant="h4"
+      fontWeight={600}
+      gutterBottom
       sx={{
-        width: "98.8vw",
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        alignItems: "center",
-        justifyContent: "center",
-        px: { xs: 2, md: 8 },
-        py: { xs: 6, md: 12 },
-        gap: 6,
-        overflowX: "hidden",
-        backgroundColor: "#fff", 
+        fontSize: {
+          xs: "1.5rem",
+          sm: "2rem",
+          md: "2.4rem",
+          lg: "2.8rem",
+        },
+        mb: { xs: 1, sm: 1.5, md: 2 },
+        color: "#1a1a1a",
       }}
     >
-      {/* Left side: Image */}
-      <Box
-        sx={{
-          flex: 1,
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Link href={`${import.meta.env.VITE_Backend_Url}/funds`}
-          target="_blank"
-        >
-        <Box
-          component="img"
-          src={education}
-          alt="Education Visual"
-          sx={{
-            width: { xs: "80%", md: "90%" },
-            maxWidth: "600px",
-          }}
-        />
-        </Link>
-      </Box>
-      
+      Free and open market education
+    </Typography>
 
-      {/* Right side: Text */}
-      <Box
-        sx={{
-          flex: 1,
-          textAlign: { xs: "center", md: "left" },
-        }}
-      >
-        <Typography
-          variant="h4"
-          fontWeight="600"
-          gutterBottom
-          sx={{ fontSize: { xs: "1.8rem", md: "2.4rem" }, mb: 3 }}
-        >
-          Free and open market education
-        </Typography>
+    {/* Subtext */}
+    <Typography
+      variant="body1"
+      sx={{
+        mb: { xs: 1.5, sm: 2, md: 3 },
+        fontSize: {
+          xs: "0.95rem",
+          sm: "1rem",
+          md: "1.1rem",
+          lg: "1.2rem",
+        },
+        color: "#444",
+      }}
+    >
+      Varsity, the largest online stock market education book in the world{" "}
+      <br />
+      covering everything from the basics to advanced trading.
+    </Typography>
 
-        <Typography variant="body1" sx={{ mb: 3, fontSize: "1.1rem", lineHeight: 1.8 }}>
-          Varsity, the largest online stock market education book in the world <br />
-          covering everything from the basics to advanced trading.
-        </Typography>
-        <Link
-          href={`${import.meta.env.VITE_Dashboard_Url}/funds`}
-          underline="none"
-          target="_blank"
-          rel="noopener"
-          sx={{ display: "inline-flex", alignItems: "center", fontWeight: 500 }}
-        >
-          Varsity <ArrowRightAltIcon fontSize="small" sx={{ ml: 0.5 }} />
-        </Link>
+    {/* Varsity link */}
+    <Link
+      href={`${import.meta.env.VITE_Dashboard_Url}/funds`}
+      underline="none"
+      target="_blank"
+      rel="noopener"
+      sx={{
+        display: "inline-flex",
+        alignItems: "center",
+        fontWeight: 600,
+        fontSize: { xs: "0.95rem", md: "1rem" },
+        color: "#1976d2",
+        "&:hover": { textDecoration: "underline" },
+      }}
+    >
+      Varsity <ArrowRightAltIcon fontSize="small" sx={{ ml: 0.5 }} />
+    </Link>
 
-        <Typography variant="body1" sx={{ mt: 4, mb: 2, fontSize: "1.1rem", lineHeight: 1.8 }}>
-          TradingQ&A, the most active trading and investment community in India for all your market related queries.
-        </Typography>
-        <Link 
-          href={`${import.meta.env.VITE_Dashboard_Url}/funds`}
-          underline="none"
-          target="_blank"
-          rel="noopener"
-          sx={{ display: "inline-flex", alignItems: "center", fontWeight: 500 }}
-        >
-          TradingQ&A <ArrowRightAltIcon fontSize="small" sx={{ ml: 0.5 }} />
-        </Link>
-      </Box>
-    </Box>
+    {/* Second section */}
+    <Typography
+      variant="body1"
+      sx={{
+        mt: { xs: 3, sm: 4 },
+        mb: { xs: 1, sm: 2 },
+        fontSize: {
+          xs: "0.95rem",
+          sm: "1rem",
+          md: "1.1rem",
+          lg: "1.2rem",
+        },
+        lineHeight: 1.8,
+        color: "#444",
+      }}
+    >
+      TradingQ&A, the most active trading and investment community in India for
+      all your market-related queries.
+    </Typography>
+
+    {/* TradingQ&A link */}
+    <Link
+      href={`${import.meta.env.VITE_Dashboard_Url}/funds`}
+      underline="none"
+      target="_blank"
+      rel="noopener"
+      sx={{
+        display: "inline-flex",
+        alignItems: "center",
+        fontWeight: 600,
+        fontSize: { xs: "0.95rem", md: "1rem" },
+        color: "#1976d2",
+        "&:hover": { textDecoration: "underline" },
+      }}
+    >
+      TradingQ&A <ArrowRightAltIcon fontSize="small" sx={{ ml: 0.5 }} />
+    </Link>
+  </Box>
+</Box>
+
   );
 }
