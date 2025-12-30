@@ -17,7 +17,7 @@ export default function Pricing() {
         px: { xs: "1.5rem", sm: "2rem", md: "3rem", lg: "4rem" },
         py: { xs: "2.5rem", sm: "3rem", md: "4rem" },
         gap: { xs: 2, md: 3, lg: 0 },
-        width: "100%",
+        // width: "100%",
         backgroundColor: "#fff",
       }}
     >

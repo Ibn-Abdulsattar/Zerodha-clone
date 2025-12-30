@@ -29,7 +29,7 @@ export default function Hero() {
     <Box 
       component="section" 
       sx={{ 
-        width: "100%", // Fixed: 98.8vw creates horizontal scrollbars on Windows
+        // width: "100%", // Fixed: 98.8vw creates horizontal scrollbars on Windows
         overflowX: "hidden",
         py: { xs: 10, md: 12 }, 
         pb:{xs:0, md:0}

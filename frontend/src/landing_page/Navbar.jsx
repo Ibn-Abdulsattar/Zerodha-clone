@@ -47,7 +47,7 @@ export default function Navbar() {
           borderBottom: "1px solid #ccc",
           height: "4rem",
           px: "1rem",
-          width: "100%",
+          // width: "100%",
           justifyContent: "center",
         }}
       >

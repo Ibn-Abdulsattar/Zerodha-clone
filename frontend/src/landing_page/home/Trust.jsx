@@ -11,7 +11,7 @@ export default function Trust() {
       sx={() => ({
         px: { xs: "1.5rem", sm: "2rem", md: "3rem", lg: "4rem" },
         py: { xs: "0rem", md:"1rem" },
-        width: "100%",
+        // width: "100%",
         overflowX: "hidden",
         backgroundColor: "#fff",
       })}

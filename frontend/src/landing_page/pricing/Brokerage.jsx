@@ -35,7 +35,7 @@ export default function Brokerage() {
     <Box
       component="section"
       sx={{
-        width: "100%", // Prevent horizontal scroll
+        // width: "100%", // Prevent horizontal scroll
         py: { xs: 4, md: 8 },
         backgroundColor: "#fff",
       }}
