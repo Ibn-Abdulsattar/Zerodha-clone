@@ -28,8 +28,9 @@ export async function createFund(req, res) {
     const existingTotal =  dailyTotal.length > 0 ? dailyTotal[0].total : 0;
     const newTotal = existingTotal + amount ;
 
+    const currentUsedMargin = latestFund?.usedMargin || 0
     const newAvailableMargin = latestFund ? latestFund.availableMargin + amount : amount;
-    const newAvailableCash = latestFund ? latestFund.availableCash + amount : amount;
+    const newAvailableCash = newAvailableMargin + currentUsedMargin;
     
         const newFund = new Fund({
       amount: amount,
@@ -37,6 +38,7 @@ export async function createFund(req, res) {
       user: req.user._id,
       availableMargin: newAvailableMargin,
       availableCash: newAvailableCash,
+      usedMargin: currentUsedMargin,
       payin: newTotal,
     });
 
