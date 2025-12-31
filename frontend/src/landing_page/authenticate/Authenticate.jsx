@@ -8,6 +8,7 @@ import {
   Link,
   Grid,
   Alert,
+  Paper
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import axios from "axios";
@@ -46,12 +47,6 @@ function Authenticate() {
     }));
   };
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   const handleSubmit = async (e) => {
   e.preventDefault();
   setLoading(true); // Disable the button and show spinner
@@ -80,36 +75,58 @@ function Authenticate() {
   }
 };
 
-
   return (
-    <Container maxWidth="xs" sx={{minHeight: "80vh"}}>
-        <Box sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-      <Box
+    <Container maxWidth={false} sx={{minHeight: "auto",mt:11, mb:{xs:2, md:2}
+    }}>
+        <Box sx={{display: "flex", justifyContent: "center", alignItems: "center",}}>
+      <Paper
+         elevation={3}
         sx={{
-          marginTop: 15,
+          p: { xs: 2, sm: 4 }, // Responsive padding
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          mb: 5,
-          border: "1px solid #e7e5e5ff",
-          borderRadius: "2rem",
-          p:2,
-          bgcolor: "#fbfbfb",
-          boxShadow:2
+          borderRadius: 4,
+          bgcolor: "background.paper",
+          // Responsive Width Logic
+          width: {
+            xs: '90%',    // Mobile
+            sm: '70%',    // Tablet
+            md: '50%',    // Laptop
+            lg: '40%',    // Desktop
+            xl: '30%',    // Large Screen
+            
+          },
+          maxWidth: '500px', // Prevents it from getting too wide on large monitors
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
           <LockOutlinedIcon />
         </Avatar>
 
-        <Typography component="h1" variant="h5">
-          {isSignup ? "Sign Up" : "Sign In"}
-        </Typography>
+        <Typography 
+  component="h1" 
+  variant="h5" 
+  sx={{
+    fontWeight: 600, 
+    mb: 1,
+    // Responsive font sizing
+    fontSize: {
+      xs: '1.25rem', // Mobile (approx 20px)
+      sm: '1.5rem',  // Tablet (approx 24px)
+      md: '1.75rem', // Desktop (approx 28px)
+      lg: '2rem',    // Large screens (approx 32px)
+    }
+  }}
+>
+  {isSignup ? "Sign Up" : "Sign In"}
+</Typography>
 
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-          <Grid container spacing={2}>
+
+        <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
+          <Grid container spacing={1.5}>
             {isSignup && (
-              <Grid xs={12}>
+              <Grid size={12}>
                 <TextField
                   autoFocus
                   fullWidth
@@ -118,11 +135,10 @@ function Authenticate() {
                   value={formData.username}
                   onChange={handleChange}
                   required
-                  sx={{ width: "24.8rem" }}
                 />
               </Grid>
             )}
-            <Grid xs={12}>
+            <Grid size={12}>
               <TextField
                 fullWidth
                 label="Email Address"
@@ -131,52 +147,25 @@ function Authenticate() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                sx={{ width: "24.8rem" }}
               />
             </Grid>
 
-            <Grid xs={12}>
-              <FormControl variant="outlined" sx={{ width: "24.8rem" }}>
-                <InputLabel
-                  htmlFor="outlined-adornment-password"
-                  sx={{
-                    "&.Mui-focused": {
-                      color: "#078dfcff",
-                    },
-                  }}
-                >
-                  Password
-                </InputLabel>
-
+            <Grid size={12}>
+              <FormControl variant="outlined" fullWidth required>
+                <InputLabel htmlFor="auth-password">Password</InputLabel>
                 <OutlinedInput
-                  id="outlined-adornment-password"
+                  id="auth-password"
                   type={showPassword ? "text" : "password"}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  required
                   label="Password"
-                  fullWidth
-                  sx={{
-                    backgroundColor: "#fff",
-                    color: "#242424",
-                    borderRadius: "6px",
-                    "& .MuiOutlinedInput-notchedOutline": {
-                    },
-                    "&:hover .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "black",
-                    },
-                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#038af8ff",
-                    },
-                  }}
                   endAdornment={
                     <InputAdornment position="end">
                       <IconButton
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
+                        onClick={() => setShowPassword(!showPassword)}
+                        onMouseDown={(e) => e.preventDefault()}
                         edge="end"
-                        sx={{ color: "#4d4b4bff" }}
                       >
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
@@ -188,7 +177,7 @@ function Authenticate() {
           </Grid>
 
           {error && (
-            <Alert severity="error" sx={{ mt: 2 }}>
+            <Alert severity="error" variant="filled" sx={{ mt: 3, borderRadius: 2 }}>
               {error}
             </Alert>
           )}
@@ -197,29 +186,34 @@ function Authenticate() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, height: 40 }}
             disabled={loading}
+            sx={{ 
+              mt: {xs:2, md:4}, 
+              mb: {xs:1,sm:2}, 
+              py: {xs:1.5,md:2}, 
+              fontSize: {xs:".8rem",sm:'1rem'}, 
+              fontWeight: 600,
+              borderRadius: 2,
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+            }}
           >
-            {loading ? (
-              <CircularProgress size={24} sx={{ color: "white" }} />
-            ) : isSignup ? (
-              "Sign Up"
-            ) : (
-              "Sign In"
-            )}
+            {loading ? <CircularProgress size={26} color="inherit" /> : (isSignup ? "Sign Up" : "Sign In")}
           </Button>
 
-          <Grid container justifyContent="center">
-            <Grid size={{ xs: 12 }} sx={{display: "flex", justifyContent: "center"}}>
-              <Link href="#" variant="body2" onClick={toggleMode}>
-                {isSignup
-                  ? "Already have an account? Sign in"
-                  : "Don't have an account? Sign up"}
-              </Link>
-            </Grid>
-          </Grid>
+          <Box sx={{ textAlign: "center", }}>
+            <Link 
+              component="button" 
+              type="button"
+              variant="body2" 
+              onClick={toggleMode}
+            >
+              {isSignup
+                ? "Already have an account? Sign in"
+                : "Don't have an account? Sign up"}
+            </Link>
+          </Box>
         </Box>
-      </Box>
+      </Paper>
       </Box>
     </Container>
   );

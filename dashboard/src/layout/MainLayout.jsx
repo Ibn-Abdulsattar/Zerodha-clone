@@ -8,7 +8,7 @@ function MainLayout() {
     <div className="dashboard-container">
         <GlobalAlert />
         <WatchList />
-        <div className="content">
+        <div className="content" >
           <Outlet />
         </div>
     </div>

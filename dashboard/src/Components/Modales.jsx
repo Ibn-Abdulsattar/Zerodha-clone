@@ -21,10 +21,23 @@ const Modales = ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "27rem",
     bgcolor: "background.paper",
     borderRadius: "8px",
     p: 4,
+     // Widths based on breakpoints
+    width: {
+      xs: '95%',    // Default (mobile)
+      sm: '60%',    // 600px+
+      md: '50%',    // 900px+
+      lg: '35%',    // 1200px+
+      xl: '30%',    // 1536px+
+    },
+    // Max width constraint
+    maxWidth: '600px',
+    
+    // Height styling
+    height: 'auto',
+    maxHeight: '95vh',
   };
 
   const [price, setPrice] = useState(0);
